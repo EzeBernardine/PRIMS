@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
 body   {
+  font-family: 'Fira Sans', sans-serif;
   margin: 0 !important;
   padding: 0 !important;
   /* font-family: Lora; */
@@ -7,5 +9,5 @@ body   {
   -moz-osx-font-smoothing: grayscale;
    /* height: 100vh; */
 
-  font-family: 'Lora', serif;
+  /* font-family: 'Lora', serif; */
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { AboutContainer } from '../styles/AboutStyles'
+import { AboutContainer } from '../styles/AboutStyles';
+import { Button } from '../styles/ButtonStyles'
 
 
 export default class History extends Component {
@@ -8,8 +9,12 @@ export default class History extends Component {
     return (
       <AboutContainer>
         <div>
-          <h2>History Of PSM</h2>
-          <p>PSM is an online platform for tracking all Nigerian prisons and prisoners. We give updated information about the current prison activites, and upcoming ones.</p>
+          <h2>CONTACT PSM TODAY</h2>
+          <p>We would like to hear your view on related issues.</p>
+          <div className='contact'>
+            <input />
+            <Button>SUBSCRIBE</Button>
+          </div>
         </div>
       </AboutContainer>
     );

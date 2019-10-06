@@ -4,7 +4,7 @@ import Landing from '../component/pages/Landing';
 import Profile from '../component/pages/Profile';
 import AllPrisoners from '../component/pages/AllPrisoners';
 import AddPrisoner from '../component/pages/AddPrisoner';
-import RemovePrisoner from '../component/pages/RemovePrisoner';
+import PrisonerDetail from '../component/pages/PrisonerDetail';
 // import NotFound from '../component/NotFound';
 
 const Router = () => (
@@ -15,7 +15,7 @@ const Router = () => (
         <Route path="/profile" component={Profile} exact={true} />
         <Route path="/allprisoners" component={AllPrisoners} exact={true} />
         <Route path="/addprisoner" component={AddPrisoner} exact={true} />
-        <Route path="/removeprisoner" component={RemovePrisoner} exact={true} />
+        <Route path="/prisonerdetail" component={PrisonerDetail} exact={true} />
         {/* <Route component={NotFound} /> */}
       </Switch>
     </div>

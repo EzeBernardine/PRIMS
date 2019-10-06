@@ -81,7 +81,6 @@ export const ProfileCounter = styled.div`
             > h3 {
                 margin: 15px 0;
                 font-size: 16px;
-                /* color: #4f4f4f; */
             }
             > ul {
                 margin: 0;

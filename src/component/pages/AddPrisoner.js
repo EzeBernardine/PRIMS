@@ -26,7 +26,6 @@ export default class AddPrisoner extends Component {
         <aside>
           <NavLink to='/profile'> Back </NavLink>
           <NavLink to='/'> Home </NavLink>
-          <NavLink to='/removeprisoner'> Remove </NavLink>
 
         </aside>
         <Flex>
@@ -78,7 +77,24 @@ export default class AddPrisoner extends Component {
                 <textarea />
               </Flex>
 
-              <Flex justifyCenter row>
+              <Flex className='secEle'>
+                <form onChange={this.getPdfFile}>
+                  <input
+                    placeholder='search'
+                    type='file'
+                    className="inputfile"
+                    ref="fieldName"
+                  />
+                  <label
+                    type="file"
+                  >
+                    Choose an image
+                  </label>
+                </form>
+              </Flex>
+
+
+              <Flex justifyCenter row className='btn'>
                 <Button >Add</Button>
               </Flex>
             </form>

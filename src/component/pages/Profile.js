@@ -44,7 +44,6 @@ export default class AddPrisoner extends Component {
               <h2>My Dashboard</h2>
               <ul>
                 <li><NavLink to='/addprisoner'> <IoIosPersonAdd /> <span>Add Prisoner</span></NavLink></li>
-                <li><NavLink to='/removeprisoner'><FaUserMinus /> <span>Remove Prisoner</span></NavLink></li>
                 <li><NavLink to='/allprisoners'><IoIosPeople /> <span>All Prisoner</span></NavLink></li>
                 <li><NavLink to='#'><IoIosHome /> <span>Rehab Centers</span></NavLink></li>
               </ul>

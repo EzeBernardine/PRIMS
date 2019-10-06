@@ -84,8 +84,36 @@ export const SignUpContainer = styled.div`
          }
 
        
-        > div:last-child {  /* For the botton  */
+        > .btn {  /* For the botton  */
           margin: 60px auto 30px auto;
+        }
+
+        .secEle {
+            height: 25px;
+            border: 1px solid #f1f1f1;
+            width: 150px;
+            display: flex;
+            justify-content: center;
+            box-shadow:  inset 0 0 10px #e6e6e6;
+            align-items: center;
+            cursor: pointer;
+
+            :hover {
+              box-shadow:  inset 0 0 10px #b0a8a4;
+              *{  color: #979795   }
+            };
+            input:nth-child(1) {
+              cursor: pointer;
+              width: 100px;
+              height: 25px;
+              position: absolute;
+              opacity: 0
+            }
+            label {
+              cursor: pointer;
+              color: #8e8e8e;
+              font-size: 13px;
+            }
         }
      }
 
