@@ -54,6 +54,9 @@ export const SignUpContainer = styled.div`
              grid-gap: 7px;
              margin-bottom: 20px;
              justify-content: color;
+             > small {
+               color: red;
+             }
             > label {
                 position: relative;
                 top: 0;

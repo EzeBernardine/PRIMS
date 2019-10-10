@@ -5,7 +5,11 @@ import styled, { css } from 'styled-components'
 
 export const Button = styled.button`
 
-background: #ff5000;
+/* background: #ff5000; */
+background: ${props => 
+        props.dark ? '#ac5f3b' 
+            : '#ff5000'  
+    };
 border: none;
 height: 51px;
 width: 203px;
@@ -17,8 +21,14 @@ font-weight: bold;
         outline: none
     }
     :hover {
-        border: 1px solid #ff5000;
-        color: #ff5000;
+        border: ${props => 
+            props.dark ? '1px solid #ac5f3b' 
+                : '1px solid #ff5000'  
+        };
+        color:  ${props => 
+            props.dark ? '#ac5f3b' 
+                : '#ff5000'  
+        };;
         background: white;
     }
 
