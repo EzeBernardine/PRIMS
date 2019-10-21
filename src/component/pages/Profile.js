@@ -13,15 +13,15 @@ export default class AddPrisoner extends Component {
   render() {
     let menus = [
       {
-        name: 'Home',
+        name: 'HOME',
         to: '/'
       },
       {
-        name: 'Prisoners',
+        name: 'PRISONERS',
         to: '/allprisoners'
       },
       {
-        name: 'Prisons',
+        name: 'PRISONS',
         to: '/#'
       },
     ]
@@ -103,7 +103,7 @@ export default class AddPrisoner extends Component {
             </div>
 
             <div className='btn'>
-            <Button >Delete Account</Button>
+            <Button red>Delete Account</Button>
             </div>
           </section>
 

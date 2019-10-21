@@ -4,38 +4,74 @@ import { SignUpContainer, Flex } from '../styles/AddPrisonerStyles';
 import Menu from '../faetures/Menu';
 import { Button } from '../styles/ButtonStyles';
 import { IoIosAdd } from "react-icons/io";
-
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+const yup = require('yup');
 
-let yup = require('yup');
+let record = []    
 
-let record = []
+
 export default class PrisonerDetail extends Component {
   state = {
-    addForm: true,
-    newRecord: []
+    addForm: undefined, // This controls the addform display
+    newRecord: [] //This hold all the daily record of a prisoner
   }
+
 
   displayAddForm = () => {
     this.setState({ addForm: true })
   }
 
-  checkNewRecord = (values) => {
 
+  checkNewRecord = (values) => {
+    // Getting current date and time for each new daily record
     let today = new Date();
     let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-
+    // Pushing each new daily record into an empty array
     record.push({
       analysis: values.analysis.trim(),
-      tags: [values.tag.trim()],
+      tags: values.tag.split(' ').join('').split(','),
       date: date + ' ' + time
     })
+    // Settted the new array as a setstate for newRecords which is all the records of a user
     this.setState({
       newRecord: record,
       addForm: false
     })
-    console.log(this.state.newRecord)
+    // console.log(this.getAllTags(this.state.newRecord))
+
+   
+  }
+
+
+  getAllTags = (newRecord) => {
+    let tags = []
+    newRecord.map(record => {
+      record.tags.map(tag => {
+        tags.push(tag)
+      })
+    })
+    // tags is the list aff all the tags put togethe
+    return this.getHighestOccuringTag(tags)
+  }
+
+
+  getHighestOccuringTag = (tags) => {
+    let mf = 1;
+    let m = 0;
+    let item;
+    for (let i = 0; i < tags.length; i++) {
+      for (let j = i; j < tags.length; j++) {
+        if (tags[i] == tags[j]) m++;
+        if (mf < m) {
+          mf = m;
+          item = tags[i];
+        }
+      }
+      m = 0;
+    }
+    // return the highest occuring tag
+    return item + ' ' + mf + " times ";
   }
 
   render() {
@@ -43,19 +79,19 @@ export default class PrisonerDetail extends Component {
 
     let menus = [
       {
-        name: 'Home',
+        name: 'HOME',
         to: '/'
       },
       {
-        name: 'Prisoners',
+        name: 'PRISONERS',
         to: '/allprisoners'
       },
       {
-        name: 'Prisons',
+        name: 'PRISONS',
         to: '/#'
       },
       {
-        name: 'Profile',
+        name: 'PROFILE',
         to: '/profile'
       },
     ]
@@ -136,7 +172,7 @@ export default class PrisonerDetail extends Component {
                 ))
               }
             </p>
-            <Button >DELETE RECORD</Button>
+            <Button red>DELETE RECORD</Button>
           </aside>
         </section>
 
@@ -154,16 +190,15 @@ export default class PrisonerDetail extends Component {
                         setSubmitting(false);
                       }, 400);
                     }}
-
                     validationSchema={schema}
                   >
                     {({ isSubmitting }) => (
                       <Form>
                         <Flex>
                           <Field type="text" name="analysis" placeholder='Analysis'
-                            component="textarea" />
+                            component="textarea" spellCheck="true" />
                           <ErrorMessage name="analysis" component="small" />
-                          <Field type="text" name="tag" placeholder='Tags' />
+                          <Field type="text" name="tag" placeholder='Tags. Seperate them with commas' spellCheck="true" />
                           <ErrorMessage name="tag" component="small" />
                         </Flex>
 
@@ -173,7 +208,7 @@ export default class PrisonerDetail extends Component {
                           type="submit"
                           disabled={isSubmitting}
                         >
-                          <Button dark >Add</Button>
+                          <Button  >Add</Button>
                         </Flex>
                       </Form>
                     )}
@@ -195,7 +230,7 @@ export default class PrisonerDetail extends Component {
           <div>
             {
               this.state.newRecord.map((record, index) => (
-                < div className='dailyRecord'>
+                < div className='dailyRecord' key={index}>
                   <p>  <small className='date'>{record.date}</small>  </p>
 
                   <p>
@@ -207,7 +242,7 @@ export default class PrisonerDetail extends Component {
                     <small>
                       {
                         record.tags.map((tag, index) => (
-                          <span className='tag'>{tag}</span>
+                          <span className='tag' key={index}>{tag}</span>
                         ))
                       }
                     </small>

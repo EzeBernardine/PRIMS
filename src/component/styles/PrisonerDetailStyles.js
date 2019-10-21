@@ -33,7 +33,7 @@ export const DetailContainer = styled.div`
 
      > .imgContainer {
         > img {
-            width: 60%;
+            width: 80%;
             margin: 50px auto;
             height: auto
         }
@@ -75,7 +75,7 @@ export const DetailContainer = styled.div`
 
     .tag {
         color: #8c5b48;
-        margin: 0 5px;
+        margin: 0 5px 0 0;
         background: #fff3ed;
         padding: 3px 5px;
         font-weight: bold;
@@ -103,6 +103,7 @@ export const DetailContainer = styled.div`
         margin: 0 auto;
       }
       button {width: 100%}
+      textarea {resize: none}
     }
     
     .addBtn {

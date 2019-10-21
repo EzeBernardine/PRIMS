@@ -8,6 +8,7 @@ export const Button = styled.button`
 /* background: #ff5000; */
 background: ${props => 
         props.dark ? '#ac5f3b' 
+        :  props.red ? 'red' 
             : '#ff5000'  
     };
 border: none;
@@ -23,10 +24,12 @@ font-weight: bold;
     :hover {
         border: ${props => 
             props.dark ? '1px solid #ac5f3b' 
-                : '1px solid #ff5000'  
+                : props.red ? '1px solid red' 
+                    : '1px solid #ff5000'  
         };
         color:  ${props => 
             props.dark ? '#ac5f3b' 
+                : props.red ? 'red' 
                 : '#ff5000'  
         };;
         background: white;

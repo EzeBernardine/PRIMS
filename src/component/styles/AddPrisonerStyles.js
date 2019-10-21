@@ -51,74 +51,66 @@ export const SignUpContainer = styled.div`
 
      form { /* The form and its contents*/
          > div {
-             grid-gap: 7px;
+             grid-gap: 15px;
              margin-bottom: 20px;
              justify-content: color;
-             > small {
+              small {
                color: red;
-             }
-            > label {
-                position: relative;
-                top: 0;
-                color: #979795;
-                font-size: 14px;
-                margin-left: 5px;
-            }
-            >input {
-                border: 1px solid #d7d6d3;
-                padding: 7px;
-                color: #707070;
-            }
-           > div {
-               flex: 1;
-               > label {
-                position: relative;
-                top: 0;
-                color: #979795;
-                font-size: 14px;
-                margin-left: 5px;
-            }
-            >input {
-                border: 1px solid #d7d6d3;
-                padding: 7px;
-                color: #707070;
-            }
+              }
+              > .time {
+                grid-gap: 20px;
+                > div {
+                  flex: 1;
+                  min-width: 150px
+                }
+              }
+              input {
+                  border: 1px solid #d7d6d3;
+                  padding: 7px;
+                  color: #707070;
+              }
+              textarea{resize: none}
+        
            }
-         }
 
        
-        > .btn {  /* For the botton  */
-          margin: 60px auto 30px auto;
-        }
+          > .btn {  /* For the botton  */
+            margin: 60px auto 30px auto;
+          }
 
-        .secEle {
-            height: 25px;
-            border: 1px solid #f1f1f1;
-            width: 150px;
-            display: flex;
-            justify-content: center;
-            box-shadow:  inset 0 0 10px #e6e6e6;
-            align-items: center;
-            cursor: pointer;
-
-            :hover {
-              box-shadow:  inset 0 0 10px #b0a8a4;
-              *{  color: #979795   }
-            };
-            input:nth-child(1) {
-              cursor: pointer;
-              width: 100px;
+          .secEle {
               height: 25px;
-              position: absolute;
-              opacity: 0
-            }
-            label {
+              border: 1px solid #f1f1f1;
+              width: 150px;
+              display: flex;
+              justify-content: center;
+              box-shadow:  inset 0 0 10px #e6e6e6;
+              align-items: center;
               cursor: pointer;
-              color: #8e8e8e;
-              font-size: 13px;
-            }
-        }
-     }
+
+              :hover {
+                box-shadow:  inset 0 0 10px #b0a8a4;
+                *{  color: #979795   }
+              };
+              input:nth-child(1) {
+                cursor: pointer;
+                width: 100px;
+                height: 25px;
+                position: absolute;
+                opacity: 0
+              }
+              small {
+                position: relative;
+                top: 28px;
+                right: 100px;
+              }
+          }
+          label {
+            cursor: pointer;
+            color: #8e8e8e;
+            font-size: 13px;
+          }
+      }
 
   }
 
@@ -129,4 +121,5 @@ export const Flex = styled.div`
  flex-direction: ${props => props.row  ? "row" : ' column'};
  justify-content: ${props => props.justifyCenter  ? "center" : ' stretch'};
  display: flex;
+ flex-wrap: wrap;
 `;

@@ -130,15 +130,15 @@ export default class AllPrisoners extends Component {
   render() {
     let menus = [
       {
-        name: 'Home',
+        name: 'HOME',
         to: '/'
       },
       {
-        name: 'Prisons',
+        name: 'PRISONS',
         to: '/#'
       },
       {
-        name: 'Profile',
+        name: 'PROFILE',
         to: '/profile'
       },
     ]
