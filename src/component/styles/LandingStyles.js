@@ -1,9 +1,9 @@
-import img from '../image/1130-california-prisons-crowding.jpg';
+import img from '../image/prisonersBack.jpg';
 
 import styled from 'styled-components'
 
 export const StyledCounter = styled.div`
-  /* background: red; */
+
 `
 export const LandingView = styled.div`
   @import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');

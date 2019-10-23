@@ -69,6 +69,11 @@ export const SignUpContainer = styled.div`
                   padding: 7px;
                   color: #707070;
               }
+              select {
+                  border: 1px solid #d7d6d3;
+                  padding: 7px;
+                  color: #707070;
+              }
               textarea{resize: none}
         
            }

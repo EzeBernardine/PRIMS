@@ -79,10 +79,6 @@ export default class PrisonerDetail extends Component {
 
     let menus = [
       {
-        name: 'HOME',
-        to: '/'
-      },
-      {
         name: 'PRISONERS',
         to: '/allprisoners'
       },
