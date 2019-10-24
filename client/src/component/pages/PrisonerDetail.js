@@ -3,8 +3,9 @@ import { DetailContainer } from '../styles/PrisonerDetailStyles';
 import { SignUpContainer, Flex } from '../styles/AddPrisonerStyles';
 import Menu from '../faetures/Menu';
 import { Button } from '../styles/ButtonStyles';
-import { IoIosAdd } from "react-icons/io";
+import { IoIosAdd,IoMdClose } from "react-icons/io";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { FaEdit } from "react-icons/fa";
 const yup = require('yup');
 
 let record = []    
@@ -19,6 +20,9 @@ export default class PrisonerDetail extends Component {
 
   displayAddForm = () => {
     this.setState({ addForm: true })
+  }
+  handleCloseForm = () => {
+    this.setState({ addForm: false })
   }
 
 
@@ -84,7 +88,7 @@ export default class PrisonerDetail extends Component {
       },
       {
         name: 'PRISONS',
-        to: '/#'
+        to: '/prisons'
       },
       {
         name: 'PROFILE',
@@ -135,6 +139,7 @@ export default class PrisonerDetail extends Component {
           </aside>
 
           <aside className='credentials'>
+            <FaEdit />
             <p>
               <span className='subtitle'>Name:</span>
               <span>{details.more[0].name}</span>
@@ -177,6 +182,7 @@ export default class PrisonerDetail extends Component {
             <SignUpContainer className='addRecord' >
               <Flex>
                 <div>
+                  <aside onClick={this.handleCloseForm}>< IoMdClose /></aside>
                   <h1>ADD RECORD</h1>
                   <Formik
                     initialValues={{ analysis: '', tag: '' }}

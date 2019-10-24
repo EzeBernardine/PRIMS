@@ -6,8 +6,8 @@ import img from '../image/orangeBackground.jpg';
 
 export const AllprisonerMain = styled.div`
    
-    background-color: #221c18;
-    height:  85vh;
+    /* background-color: #221c18; */
+    /* height:  85vh; */
     > div:first-child{
         background:  #ff5000;
         h1, a {

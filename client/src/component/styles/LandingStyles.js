@@ -21,15 +21,18 @@ font-family: 'Fira Sans', sans-serif;
     color: white;
     text-align: center;
     justify-content: center;
-    /* position: relative;
-    top: 82px; */
-
 
     > aside {
-      /* margin-left: 10%; */
-      border-bottom: 1px solid white;
       h1 {
-        font-size: 30px
+        font-size: 3em;
+        line-height: 1.7em;
+        margin: 0;
+      }
+      p{
+        border-bottom: 3px solid #fff;
+        max-width: 430px;
+        margin: auto;
+        padding-bottom: 5px
       }
     }
   
@@ -65,6 +68,7 @@ export const Section = styled.section`
         h1 {
         color: #707070;
           font-size: 20px;
+          margin: 0;
         }
         p {
         text-align: left;

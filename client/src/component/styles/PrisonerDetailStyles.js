@@ -40,6 +40,14 @@ export const DetailContainer = styled.div`
      }
      > .credentials {
          color: #2A2929;
+         > svg {
+            float: right;
+            opacity: .8;
+            :hover {
+                opacity: 1;
+                cursor: pointer;
+            }
+         }
          > p {
              display: flex;
              margin-top: 10px;

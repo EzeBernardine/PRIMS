@@ -43,11 +43,11 @@ export const ProfileCounter = styled.div`
                     margin: 10px 0;
                     display: flex;
                     align-items: center;
-                    padding: 10px 15px;
                     :hover {
                         background: #eae9e8;
                     }
                     > a {
+                        padding: 10px 15px;
                         color: #707070;
                         text-decoration: none;
                     }
