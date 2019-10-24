@@ -14,7 +14,7 @@ const prisonerSchema = new mongoose.Schema({
     required: true
   },
   DateOfEntry: {
-    type: Date.now(),
+    type: Date,
     required: true
   },
   timeOfEntry: {

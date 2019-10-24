@@ -1,14 +1,15 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 require('./config/database');
+const typeDefs = require('./modules/prisoners/prisonerSchema');
+const resolvers = require('./modules/prisoners/prisonerResolver');
 const app = express();
 
-const resolvers;
-const typeDefs;
+
 
 const server = new ApolloServer({
-  resolvers,
-  typeDefs
+  typeDefs,
+  resolvers
 })
 
 server.applyMiddleware({ app })
