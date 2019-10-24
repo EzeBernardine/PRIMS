@@ -1,0 +1,1 @@
+const Prisoner = require('./models/prisoner')
