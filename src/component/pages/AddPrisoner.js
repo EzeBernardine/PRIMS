@@ -23,9 +23,9 @@ export default class AddPrisoner extends Component {
     // reseting the add prisoner form
     resetForm()
 
+
     // pushing all prison records into an empty array
     prisoners.push({ name, email, nationality, state, timeImprisoned, timeReleased, dateImprisoned, dateReleased, lga, story, image, duration })
-
 
     // storing data to local storage
     localStorage.setItem('prisoners', JSON.stringify(prisoners))

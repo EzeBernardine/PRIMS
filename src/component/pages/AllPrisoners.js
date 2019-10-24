@@ -144,7 +144,7 @@ export default class AllPrisoners extends Component {
 
 
     let prisoners = JSON.parse(localStorage.getItem('prisoners'))
-
+    
 
 
     return (
