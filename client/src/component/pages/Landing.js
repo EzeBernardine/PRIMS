@@ -35,9 +35,8 @@ export default class Landing extends Component {
 
         <LandingView >
           <aside>
-            <h1>Nigerian Prisons</h1>
+            <h1>NIGERIAN PRISONERS</h1>
             <p>A Prison Management System for prisoners in Ngeria</p>
-            {/* <button></button> */}
           </aside>
         </LandingView>
 

@@ -26,7 +26,7 @@ export const MenuCounter = styled.div`
   > h1 {
     color: ${props => props.menu > 100 ? "#ff5000" : ' #eee4d8'};
     margin-left: 10%;
-
+    > a {color: white; text-decoration: none}
   }
   > ul {
     margin: 0;

@@ -26,7 +26,7 @@ export default class Landing extends Component {
   
     return (
       <MenuCounter menu={this.props.menu} onScroll={this.handleScroll}  menu={this.state.menuPosition} >
-        <h1>PMS</h1>
+        <h1> <NavLink to ='/'>PMS </NavLink></h1>
         <ul>
           {
             menus.map((menu, index) => (
