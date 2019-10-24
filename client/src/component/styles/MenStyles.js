@@ -24,25 +24,31 @@ export const MenuCounter = styled.div`
   }
 
   > h1 {
-    color: ${props => props.menu > 100 ? "#ff5000" : ' #eee4d8'};
     margin-left: 10%;
-    > a {color: white; text-decoration: none}
+    > a {
+      color: ${props => props.menu > 100 ? "#ff5000" : ' #eee4d8'};
+      text-decoration: none
+      }
   }
   > ul {
     margin: 0;
     padding: 0;
     display: inline-flex;
     margin-right: 10%;
-    > a  {
-    color: ${props => props.menu > 100 ? "#ff5000" : ' #eee4d8'};
-      list-style: none;
-      text-decoration: none;
-      /* color: #eee4d8; */
-      margin: 0 5px;
-      :hover {
-        text-decoration: underline;
-        cursor: pointer;
-        /* color: ${props => props.menu > 100 ?' #eee4d8'  : "#ff5000"}; */
+    >  {
+      li {
+        list-style: none;
+        a  {
+          color: ${props => props.menu > 100 ? "#ff5000" : ' #eee4d8'};
+          text-decoration: none;
+          font-weight: bold;
+          margin: 0 5px;
+          :hover {
+            border-bottom: ${props => props.menu > 100 ? " 3px solid #ff5000" : ' 3px solid #eee4d8'};
+            cursor: pointer;
+            /* color: ${props => props.menu > 100 ?' #eee4d8'  : "#ff5000"}; */
+          }
+        }
       }
     }
   

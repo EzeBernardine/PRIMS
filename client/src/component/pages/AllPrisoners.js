@@ -134,7 +134,7 @@ export default class AllPrisoners extends Component {
     let menus = [
       {
         name: 'PRISONS',
-        to: '/#'
+        to: '/prisons'
       },
       {
         name: 'PROFILE',
@@ -171,22 +171,18 @@ export default class AllPrisoners extends Component {
                       </p>
                       <p>
                         <span>Age: </span>
-                        <span >{prisoner.age} </span>
+                        <span >{prisoner.currentAge} </span>
                       </p>
                       <p>
                         <span>Gender: </span>
                         <span >{prisoner.gender} </span>
                       </p>
-                      <p>
-                        <span>State: </span>
-                        <span >{prisoner.state} </span>
-                      </p>
-                      <p>
-                        <span>Nationality: </span>
-                        <span >{prisoner.Nationality} </span>
-                      </p>
                       <p className='duration'>
                         <small>{prisoner.dateImprisoned} _{prisoner.dateReleased} </small>
+                      </p>
+                      <p className='duration'>
+                        <span>Time: </span>
+                        <small>{prisoner.timeReleased} </small>
                       </p>
                     </div>
                   </div>

@@ -18,7 +18,7 @@ export default class AddPrisoner extends Component {
       },
       {
         name: 'PRISONS',
-        to: '/#'
+        to: '/prisons'
       },
     ]
 
@@ -39,9 +39,10 @@ export default class AddPrisoner extends Component {
             <div>
               <h2>My Dashboard</h2>
               <ul>
-                <li><NavLink to='/addprisoner'> <IoIosPersonAdd /> <span>Add Prisoner</span></NavLink></li>
-                <li><NavLink to='/allprisoners'><IoIosPeople /> <span>All Prisoner</span></NavLink></li>
-                <li><NavLink to='#'><IoIosHome /> <span>Rehab Centers</span></NavLink></li>
+                <li><NavLink to='/addprisoner'> <IoIosPersonAdd /> <span>ADD PRISONER</span></NavLink></li>
+                <li><NavLink to='/addStaff'> <IoIosPersonAdd /> <span>ADD STAFF</span></NavLink></li>
+                <li><NavLink to='/allprisoners'><IoIosPeople /> <span>ALL PRISONER</span></NavLink></li>
+                {/* <li><NavLink to='#'><IoIosHome /> <span>REHAB CENTER</span></NavLink></li> */}
               </ul>
             </div>
           </aside>

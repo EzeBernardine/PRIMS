@@ -22,7 +22,7 @@ export default class Landing extends Component {
       },
       {
         name: 'PRISONS',
-        to: '/#'
+        to: '/prisons'
       },
       {
         name: 'CATEGORIES',

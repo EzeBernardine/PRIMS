@@ -15,22 +15,28 @@ export default class AddPrisoner extends Component {
     return (Date.parse(`${endDate}` + ' ' + `${endTime}`) - Date.parse(`${startDate}` + ' ' + `${startTime}`)) / 60000
   }
 
+  getAge = (age) => {
+    return Math.round((Date.parse(`${new Date()}`) - Date.parse(`${age}`)) * 3.171e-11)
+  }
+
   checkNewPrisoner = (values, resetForm) => {
     // new prisoner's record  to be saved in database
-    let { name, email, nationality, timeImprisoned, timeReleased, dateImprisoned, dateReleased, state, lga, story, image } = values
+    let { name, email, timeImprisoned, timeReleased, dateImprisoned, dateReleased, gender, age, state, lga, story, image } = values
     let duration = this.totalDuration(timeImprisoned, timeReleased, dateImprisoned, dateReleased)
+    let currentAge = this.getAge(age)
 
     // reseting the add prisoner form
     resetForm()
 
 
     // pushing all prison records into an empty array
-    prisoners.push({ name, email, nationality, state, timeImprisoned, timeReleased, dateImprisoned, dateReleased, lga, story, image, duration })
+    prisoners.push({ name, email, state, timeImprisoned, timeReleased, dateImprisoned, dateReleased, gender, currentAge, state, lga, story, image, duration })
 
     // storing data to local storage
     localStorage.setItem('prisoners', JSON.stringify(prisoners))
-  }
 
+    console.log(JSON.parse(localStorage.getItem('prisoners')))
+  }
 
 
   render() {
@@ -43,6 +49,8 @@ export default class AddPrisoner extends Component {
       timeReleased: yup.string().required(),
       state: yup.string().required(),
       lga: yup.string().required(),
+      gender: yup.string().required(),
+      age: yup.string().required(),
       story: yup
         .string()
         .label('story')
@@ -56,6 +64,7 @@ export default class AddPrisoner extends Component {
       < SignUpContainer >
         <aside>
           <NavLink to='/profile'> Back </NavLink>
+          <NavLink to='/addStaff'>+ Staff </NavLink>
           <NavLink to='/'> Home </NavLink>
 
         </aside>
@@ -64,7 +73,7 @@ export default class AddPrisoner extends Component {
 
             <h1>ADD PRISONER</h1>
             <Formik
-              initialValues={{ name: '', email: '', timeImprisoned: '', timeReleased: '', dateImprisoned: '', dateReleased: '', state: '', lga: '', story: '', prisonunit: '', image: '' }}
+              initialValues={{ name: '', email: '', timeImprisoned: '', timeReleased: '', dateImprisoned: '', dateReleased: '', gender: '', age: '', state: '', lga: '', story: '', prisonunit: '', image: '' }}
               onSubmit={(values, { setSubmitting, resetForm }) => {
                 setTimeout(() => {
                   this.checkNewPrisoner(values, resetForm)
@@ -82,45 +91,72 @@ export default class AddPrisoner extends Component {
                     <Field type="text" name="email" placeholder='Email Address' />
                     <ErrorMessage name="email" component="small" />
 
-                    <Field component="select" name="state">
-                      <option value='Abia'> Abia </option>
-                      <option value='Adamawa'> Adamawa </option>
-                      <option value='Akwa Ibom'> Akwa Ibom </option>
-                      <option value='Anambra'> Anambra </option>
-                      <option value='Bauchi'> Bauchi </option>
-                      <option value='Bayelsa'> Bayelsa </option>
-                      <option value='Benue'> Benue </option>
-                      <option value='Borno'> Borno </option>
-                      <option value='Cross River'> Cross River </option>
-                      <option value='Delta'> Delta </option>
-                      <option value='Ebonyi'> Ebonyi </option>
-                      <option value='Enugu'> Enugu </option>
-                      <option value='Edo'> Edo </option>
-                      <option value='Ekiti'> Ekiti </option>
-                      <option value='Gombe'> Gombe </option>
-                      <option value='Imo'> Imo </option>
-                      <option value='Jigawa'> Jigawa </option>
-                      <option value='Kaduna'> Kaduna </option>
-                      <option value='Kano'> Kano </option>
-                      <option value='Katsina'> Katsina </option>
-                      <option value='Kebbi'> Kebbi </option>
-                      <option value='Kogi'> Kogi </option>
-                      <option value='Kwara'> Kwara </option>
-                      <option value='Lagos'> Lagos </option>
-                      <option value='Nasarawa'> Nasarawa </option>
-                      <option value='Niger'> Niger </option>
-                      <option value='Ogun'> Ogun </option>
-                      <option value='Ondo'> Ondo </option>
-                      <option value='Osun'> Osun </option>
-                      <option value='Oyo'> Oyo </option>
-                      <option value='Plateau'> Plateau </option>
-                      <option value='Rivers'> Rivers </option>
-                      <option value='Sokoto'> Sokoto </option>
-                      <option value='Taraba'> Taraba </option>
-                      <option value='Yobe'> Yobe </option>
-                      <option value='Zamfara'> Zamfara </option>
-                    </Field>
-                    <ErrorMessage name="state" component="small" />
+                    <label >Date of Birth and Gender</label>
+
+                    <Flex row className='time'>
+                      <Flex>
+                        <Field type="date" name="age" placeholder='Date of birth' />
+                        <ErrorMessage name="age" component="small" />
+                      </Flex>
+                      <Flex>
+                        <Field component="select" name="gender">
+                          <option value='Male'> Male </option>
+                          <option value='Female'> Femail </option>
+                        </Field>
+                        <ErrorMessage name="gender" component="small" />
+                      </Flex>
+                    </Flex>
+
+                    <label >State and LGA</label>
+
+                    <Flex row className='time'>
+                      <Flex>
+                        <Field component="select" name="state">
+                          <option value='Abia'> Abia </option>
+                          <option value='Adamawa'> Adamawa </option>
+                          <option value='Akwa Ibom'> Akwa Ibom </option>
+                          <option value='Anambra'> Anambra </option>
+                          <option value='Bauchi'> Bauchi </option>
+                          <option value='Bayelsa'> Bayelsa </option>
+                          <option value='Benue'> Benue </option>
+                          <option value='Borno'> Borno </option>
+                          <option value='Cross River'> Cross River </option>
+                          <option value='Delta'> Delta </option>
+                          <option value='Ebonyi'> Ebonyi </option>
+                          <option value='Enugu'> Enugu </option>
+                          <option value='Edo'> Edo </option>
+                          <option value='Ekiti'> Ekiti </option>
+                          <option value='Gombe'> Gombe </option>
+                          <option value='Imo'> Imo </option>
+                          <option value='Jigawa'> Jigawa </option>
+                          <option value='Kaduna'> Kaduna </option>
+                          <option value='Kano'> Kano </option>
+                          <option value='Katsina'> Katsina </option>
+                          <option value='Kebbi'> Kebbi </option>
+                          <option value='Kogi'> Kogi </option>
+                          <option value='Kwara'> Kwara </option>
+                          <option value='Lagos'> Lagos </option>
+                          <option value='Nasarawa'> Nasarawa </option>
+                          <option value='Niger'> Niger </option>
+                          <option value='Ogun'> Ogun </option>
+                          <option value='Ondo'> Ondo </option>
+                          <option value='Osun'> Osun </option>
+                          <option value='Oyo'> Oyo </option>
+                          <option value='Plateau'> Plateau </option>
+                          <option value='Rivers'> Rivers </option>
+                          <option value='Sokoto'> Sokoto </option>
+                          <option value='Taraba'> Taraba </option>
+                          <option value='Yobe'> Yobe </option>
+                          <option value='Zamfara'> Zamfara </option>
+                        </Field>
+                        <ErrorMessage name="state" component="small" />
+                      </Flex>
+
+                      <Flex>
+                        <Field type="text" name="lga" placeholder='LGA' />
+                        <ErrorMessage name="lga" component="small" />
+                      </Flex>
+                    </Flex>
 
                     <label >Date and Time Imprisoned</label>
 
@@ -148,8 +184,6 @@ export default class AddPrisoner extends Component {
                       </Flex>
                     </Flex>
 
-                    <Field type="text" name="lga" placeholder='LGA' />
-                    <ErrorMessage name="lga" component="small" />
 
                     <Field type="text" name="story" placeholder='Story' component='textarea' />
                     <ErrorMessage name="story" component="small" />
@@ -173,7 +207,7 @@ export default class AddPrisoner extends Component {
                     row
                     disabled={isSubmitting}
                   >
-                    <Button  >Add</Button>
+                    <Button  >ADD</Button>
                   </Flex>
 
                 </Form>

@@ -14,7 +14,7 @@ export const SignUpContainer = styled.div`
     > a {
     border: 1px solid #ff5000;
     color: #ff5000;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
     text-decoration: none;
     border-radius: 50%;
@@ -24,7 +24,12 @@ export const SignUpContainer = styled.div`
     justify-content: center;
     align-items: center;
     :focus {
-        outline: none
+        outline: none;
+    }
+    :hover {
+        border: 1px solid white;
+        color: white;
+        background: #ff5000;
     }
     }
 }
@@ -43,7 +48,14 @@ export const SignUpContainer = styled.div`
    width: 80%;
      margin: auto;
      padding-top: 40px;
-
+      > aside > svg {
+        float: right;
+        font-size: 30px;
+        color: #707070;
+        :hover {
+          cursor: pointer;
+        }
+      }
      > h1 {
        margin: 20px 0 50px 0;
        color: #707070;
@@ -64,6 +76,7 @@ export const SignUpContainer = styled.div`
                   min-width: 150px
                 }
               }
+              > label {margin-top: 20px}
               input {
                   border: 1px solid #d7d6d3;
                   padding: 7px;
@@ -74,7 +87,7 @@ export const SignUpContainer = styled.div`
                   padding: 7px;
                   color: #707070;
               }
-              textarea{resize: none}
+              textarea{resize: none; padding: 5px}
         
            }
 
