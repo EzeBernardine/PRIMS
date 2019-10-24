@@ -6,7 +6,7 @@ const typeDefs = gql`
     name: String
     nationality: String
     State: String
-    DateOfEntry: DateTime
+    DateOfEntry: String
     timeOfEntry: String
     LGA: String
     story: String
@@ -15,7 +15,7 @@ const typeDefs = gql`
 
   type Query{
     prisoners: [Prisoner]
-    prisoner: (id: ID): Prisoner
+    prisoner (id: ID): Prisoner
   }
 
   type Mutation{
@@ -34,7 +34,7 @@ const typeDefs = gql`
     gender: Gender
     nationality: String
     State: String
-    DateOfEntry: DateTime
+    DateOfEntry: String
     timeOfEntry: String
     LGA: String
     story: String
