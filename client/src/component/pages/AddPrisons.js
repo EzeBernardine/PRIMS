@@ -7,74 +7,59 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 let yup = require('yup');
 
 
-const prisoners = []
-export default class AddPrisoner extends Component {
+const prisons = []
+export default class AddPrisons extends Component {
 
 
-  totalDuration = (startTime, endTime, startDate, endDate) => {
-    return (Date.parse(`${endDate}` + ' ' + `${endTime}`) - Date.parse(`${startDate}` + ' ' + `${startTime}`)) / 60000
-  }
-
-  getAge = (age) => {
-    return Math.round((Date.parse(`${new Date()}`) - Date.parse(`${age}`)) * 3.171e-11)
-  }
 
   checkNewPrisoner = (values, resetForm) => {
     // new prisoner's record  to be saved in database
-    let { name, email, timeImprisoned, timeReleased, dateImprisoned, dateReleased, gender, age, state, lga, story, image } = values
-    let duration = this.totalDuration(timeImprisoned, timeReleased, dateImprisoned, dateReleased)
-    let currentAge = this.getAge(age)
+    let { prisonName, prisonManager, mdImage, prisonState, prisonLGA, prisonDetail, prisonImage } = values
 
     // reseting the add prisoner form
     resetForm()
 
 
     // pushing all prison records into an empty array
-    prisoners.push({ name, email, state, timeImprisoned, timeReleased, dateImprisoned, dateReleased, gender, currentAge, state, lga, story, image, duration })
+    prisons.push({ prisonName, prisonManager, mdImage, prisonState, prisonLGA, prisonDetail, prisonImage })
 
     // storing data to local storage
-    localStorage.setItem('prisoners', JSON.stringify(prisoners))
+    localStorage.setItem('prisons', JSON.stringify(prisons))
 
-    console.log(JSON.parse(localStorage.getItem('prisoners')))
+    console.log(JSON.parse(localStorage.getItem('prisons')))
   }
 
 
   render() {
     let schema = yup.object().shape({
-      name: yup.string().required(),
-      email: yup.string().email(),
-      dateImprisoned: yup.string().required(),
-      dateReleased: yup.string().required(),
-      timeImprisoned: yup.string().required(),
-      timeReleased: yup.string().required(),
-      state: yup.string().required(),
-      lga: yup.string().required(),
-      gender: yup.string().required(),
-      age: yup.string().required(),
-      story: yup
+      prisonName: yup.string().required(),
+      prisonManager: yup.string().required(),
+      mdImage: yup.mixed().required('A file is required'),
+      prisonState: yup.string().required(),
+      prisonLGA: yup.string().required(),
+      prisonDetail: yup
         .string()
-        .label('story')
+        .label('prisonDetail')
         .required()
-        .min(100, 'Seems a bit short...')
-        .max(500, 'We prefer moderate analysis, try shorten it.'),
-      prisonunit: yup.string().required(),
-      image: yup.mixed().required('A file is required')
+        .min(10, 'Seems a bit short...')
+        .max(100, 'We prefer moderate analysis, try shorten it.'),
+      prisonImage: yup.mixed().required('A file is required')
     });
     return (
       < SignUpContainer >
         <aside>
           <NavLink to='/profile'> BACK </NavLink>
           <NavLink to='/addStaff'>+ STAFF </NavLink>
-          <NavLink to='/addPrisons'> + PRISON </NavLink>
+          <NavLink to='/addPrisoner'>+ PRISONER </NavLink>
           <NavLink to='/'> HOME </NavLink>
 
         </aside>
         <Flex>
           <div>
 
-            <h1>ADD PRISONER</h1>
+            <h1>ADD PRISON</h1>
             <Formik
-              initialValues={{ name: '', email: '', timeImprisoned: '', timeReleased: '', dateImprisoned: '', dateReleased: '', gender: '', age: '', state: '', lga: '', story: '', prisonunit: '', image: '' }}
+              initialValues={{ prisonName: '', prisonManager: '', mdImage: '', prisonState: '', prisonLGA: '', prisonDetail: '', prisonImage: '' }}
               onSubmit={(values, { setSubmitting, resetForm }) => {
                 setTimeout(() => {
                   this.checkNewPrisoner(values, resetForm)
@@ -86,33 +71,29 @@ export default class AddPrisoner extends Component {
               {({ isSubmitting }) => (
                 <Form>
                   <Flex>
-                    <Field type="text" name="name" placeholder='Name' />
-                    <ErrorMessage name="name" component="small" />
-
-                    <Field type="text" name="email" placeholder='Email Address' />
-                    <ErrorMessage name="email" component="small" />
-
-                    <label >Date of Birth and Gender</label>
+                    <Field type="text" name="prisonName" placeholder='Name Of Prison Unit' />
+                    <ErrorMessage name="prisonName" component="small" />
 
                     <Flex row className='time'>
                       <Flex>
-                        <Field type="date" name="age" placeholder='Date of birth' />
-                        <ErrorMessage name="age" component="small" />
+                        <Field type="text" name="prisonManager" placeholder='Prison Manager' />
+                        <ErrorMessage name="prisonManager" component="small" />
                       </Flex>
                       <Flex>
-                        <Field component="select" name="gender">
-                          <option value='Male'> Male </option>
-                          <option value='Female'> Femail </option>
-                        </Field>
-                        <ErrorMessage name="gender" component="small" />
+                        <Flex className='secEle'>
+                          <Field type="file" name="mdImage" className="inputfile" />
+                          <label type="file"> MD's image </label>
+                          <ErrorMessage name="mdImage" component="small" />
+                        </Flex>
                       </Flex>
                     </Flex>
+
 
                     <label >State and LGA</label>
 
                     <Flex row className='time'>
                       <Flex>
-                        <Field component="select" name="state">
+                        <Field component="select" name="prisonState">
                           <option value='Abia'> Abia </option>
                           <option value='Adamawa'> Adamawa </option>
                           <option value='Akwa Ibom'> Akwa Ibom </option>
@@ -150,54 +131,21 @@ export default class AddPrisoner extends Component {
                           <option value='Yobe'> Yobe </option>
                           <option value='Zamfara'> Zamfara </option>
                         </Field>
-                        <ErrorMessage name="state" component="small" />
+                        <ErrorMessage name="prisonState" component="small" />
                       </Flex>
 
                       <Flex>
-                        <Field type="text" name="lga" placeholder='LGA' />
-                        <ErrorMessage name="lga" component="small" />
+                        <Field type="text" name="prisonLGA" placeholder='LGA' />
+                        <ErrorMessage name="prisonLGA" component="small" />
                       </Flex>
                     </Flex>
 
-                    <label >Date and Time Imprisoned</label>
-
-                    <Flex row className='time'>
-                      <Flex>
-                        <Field type="date" name="dateImprisoned" />
-                        <ErrorMessage name="dateImprisoned" component="small" />
-                      </Flex>
-                      <Flex>
-                        <Field type="time" name="timeImprisoned" />
-                        <ErrorMessage name="timeImprisoned" component="small" />
-                      </Flex>
-                    </Flex>
-
-                    <label >Date and Time To Be Released</label>
-
-                    <Flex row className='time'>
-                      <Flex>
-                        <Field type="date" name="dateReleased" />
-                        <ErrorMessage name="dateReleased" component="small" />
-                      </Flex>
-                      <Flex>
-                        <Field type="time" name="timeReleased" />
-                        <ErrorMessage name="timeReleased" component="small" />
-                      </Flex>
-                    </Flex>
-
-
-                    <Field type="text" name="story" placeholder='Story' component='textarea' />
-                    <ErrorMessage name="story" component="small" />
-
-                    <Field type="text" name="prisonunit" placeholder='Prison Unit' />
-                    <ErrorMessage name="prisonunit" component="small" />
+                    <Field type="text" name="prisonDetail" placeholder='Further Detail (optional)' />
 
                     <Flex className='secEle'>
-                      <Field type="file" name="image" className="inputfile" />
-                      <label type="file" >
-                        Add an image
-                        </label>
-                      <ErrorMessage name="image" component="small" />
+                      <Field type="file" name="prisonImage" className="inputfile" />
+                      <label type="file" > Prison Image </label>
+                      <ErrorMessage name="prisonImage" component="small" />
                     </Flex>
                   </Flex>
 

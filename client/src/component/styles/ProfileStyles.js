@@ -1,6 +1,3 @@
-
-import img from '../image/prisonBackWall.png';
-
 import styled, { css } from 'styled-components'
 
 export const ProfileCounter = styled.div`
@@ -15,12 +12,10 @@ export const ProfileCounter = styled.div`
     }
     
  > .profileDiv {
-
     position: relative;
     top: 82px;
     display: flex;
     grid-gap: 5%;
-    /* background: #eae9e8; */
 
     > aside {
         width: 25%;
@@ -39,20 +34,20 @@ export const ProfileCounter = styled.div`
                 
                 > li {
                     list-style: none;
-                    font-size: 14px;
                     margin: 10px 0;
-                    display: flex;
-                    align-items: center;
                     :hover {
                         background: #eae9e8;
                     }
                     > a {
+                        display: flex;
+                        grid-gap: 10px;
+                        align-items: center;
                         padding: 10px 15px;
                         color: #707070;
                         text-decoration: none;
-                    }
-                    > svg {
-                        font-size: 20px;
+                        > svg {
+                            font-size: 20px;
+                        }
                     }
                     > span {
                         margin-left: 10px
@@ -70,8 +65,7 @@ export const ProfileCounter = styled.div`
         margin: 50px;
         padding: 50px;
         position: relative;
-
-      
+ 
         > aside {
             > div{
                 img {
@@ -93,10 +87,7 @@ export const ProfileCounter = styled.div`
             }
         }
 
-
-
         > .profileRecords {
-
             > h1 {
                 font-size: 16px
             }

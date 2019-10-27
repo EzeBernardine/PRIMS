@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { ProfileCounter } from '../styles/ProfileStyles';
 import Menu from '../faetures/Menu';
-import { FaUserMinus } from "react-icons/fa";
-import { IoIosPersonAdd, IoIosHome, IoIosPeople } from "react-icons/io";
+import { FaUserPlus } from "react-icons/fa";
+import { IoIosPersonAdd, IoIosHome, IoIosPeople, IoIosAdd } from "react-icons/io";
 import { Button } from '../styles/ButtonStyles';
 import {NavLink} from 'react-router-dom'
 
@@ -38,10 +38,11 @@ export default class AddPrisoner extends Component {
           <aside>
             <div>
               <h2>My Dashboard</h2>
-              <ul>
-                <li><NavLink to='/addprisoner'> <IoIosPersonAdd /> <span>ADD PRISONER</span></NavLink></li>
-                <li><NavLink to='/addStaff'> <IoIosPersonAdd /> <span>ADD STAFF</span></NavLink></li>
+              <ul>   
+                <li><NavLink to='/addprisoner'> <FaUserPlus /> <span>ADD PRISONER</span></NavLink></li>
+                <li><NavLink to='/addStaff'> <FaUserPlus /> <span>ADD STAFF</span></NavLink></li>
                 <li><NavLink to='/allprisoners'><IoIosPeople /> <span>ALL PRISONER</span></NavLink></li>
+                <li><NavLink to='/addPrisons'><IoIosAdd /> <span>ADD PRISON</span></NavLink></li>
                 {/* <li><NavLink to='#'><IoIosHome /> <span>REHAB CENTER</span></NavLink></li> */}
               </ul>
             </div>

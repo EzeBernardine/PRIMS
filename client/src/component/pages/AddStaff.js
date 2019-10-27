@@ -50,9 +50,10 @@ export default class AddStaff extends Component {
     return (
       < SignUpContainer >
         <aside>
-          <NavLink to='/profile'> Back </NavLink>
-          <NavLink to='/addPrisoner'>+ Prisoner </NavLink>
-          <NavLink to='/'> Home </NavLink>
+          <NavLink to='/profile'> BACK </NavLink>
+          <NavLink to='/addPrisoner'>+ PRISONER </NavLink>
+          <NavLink to='/addPrisons'> + PRISON </NavLink>
+          <NavLink to='/'> HOME </NavLink>
 
         </aside>
         <Flex>
