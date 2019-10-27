@@ -44,6 +44,7 @@ export const Flex = styled.div`
   grid-gap:  ${props => props.gap ? "50px" : ' 0'};
   align-items: ${props => props.alignCenter ? "center" : ' stretch'};
   flex-direction:  ${props => props.column ? "column" : ' row'};
+  flex-wrap: wrap;
 
 ` 
 
