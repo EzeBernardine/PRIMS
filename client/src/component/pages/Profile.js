@@ -43,8 +43,8 @@ export default class AddPrisoner extends Component {
                 <li><NavLink to='/addStaff'> <FaUserPlus /> <span>ADD STAFF</span></NavLink></li>
                 <li><NavLink to='/allprisoners'><IoIosPeople /> <span>ALL PRISONER</span></NavLink></li>
                 <li><NavLink to='/addPrisons'><IoIosAdd /> <span>ADD PRISON</span></NavLink></li>
-                <li><NavLink to='#'><IoIosHome /> <span>REHAB CENTERS</span></NavLink></li>
-                <li><NavLink to='#'><IoMdLogOut /> <span>LOGOUT</span></NavLink></li>
+                <li><NavLink to='/rehabcenters'><IoIosHome /> <span>REHAB CENTERS</span></NavLink></li>
+                <li><NavLink to='/'><IoMdLogOut /> <span>LOGOUT</span></NavLink></li>
               </ul>
             </div>
           </aside>
