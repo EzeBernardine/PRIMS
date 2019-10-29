@@ -16,7 +16,7 @@ export const MenuCounter = styled.div`
     padding: 0;
     z-index: 10000;
     transition: all 0.2s ease-in-out;
-    height: auto;
+    height: 82px;
 
     background-color: ${props => props.menu < 100 ? "transparent" : ' #fff'};
 

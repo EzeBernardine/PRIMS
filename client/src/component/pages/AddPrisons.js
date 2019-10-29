@@ -34,6 +34,7 @@ export default class AddPrisons extends Component {
     let schema = yup.object().shape({
       prisonName: yup.string().required(),
       prisonManager: yup.string().required(),
+      prisonManagerPhone: yup.number().required('Phone number is required'),
       mdImage: yup.mixed().required('A file is required'),
       prisonState: yup.string().required(),
       prisonLGA: yup.string().required(),
@@ -59,7 +60,7 @@ export default class AddPrisons extends Component {
 
             <h1>ADD PRISON</h1>
             <Formik
-              initialValues={{ prisonName: '', prisonManager: '', mdImage: '', prisonState: '', prisonLGA: '', prisonDetail: '', prisonImage: '' }}
+              initialValues={{ prisonName: '', prisonManager: '', prisonManagerPhone: '', mdImage: '', prisonState: '', prisonLGA: '', prisonDetail: '', prisonImage: '' }}
               onSubmit={(values, { setSubmitting, resetForm }) => {
                 setTimeout(() => {
                   this.checkNewPrisoner(values, resetForm)
@@ -78,6 +79,10 @@ export default class AddPrisons extends Component {
                       <Flex>
                         <Field type="text" name="prisonManager" placeholder='Prison Manager' />
                         <ErrorMessage name="prisonManager" component="small" />
+                      </Flex>
+                      <Flex>
+                        <Field type="number" name="prisonManagerPhone" placeholder='Prison Manager Cell' />
+                        <ErrorMessage name="prisonManagerPhone" component="small" />
                       </Flex>
                       <Flex>
                         <Flex className='secEle'>
