@@ -33,16 +33,25 @@ export default class Prisons extends Component {
             <h1>ALL PRISONS</h1>
             <p>List of all Nigeria prisons</p>
           </aside>
-          <Flex gap>
+          <Flex gap className='prison'>
             {
               prisons ? prisons.map((prison, index) => (
 
                 <div key={index}>
-                  <div>
+                  <div className='prisonImg'>
                     <img src={require('../image/prison.jpg')} />
-                    {/* <img src={prison.prisonImage} /> */}
+
+                    <div className='prisonDetail'>
+                      <p>
+                        <span>{prison.prisonDetail && ' More Details :'} </span>
+                        <p>{prison.prisonDetail}</p>
+                      </p>
+                    </div>
                   </div>
-                  {50 >= 50 && <Flex alignCenter justifyCenter className='full'>Full</Flex>
+
+
+                  {
+                    50 >= 50 && <Flex alignCenter justifyCenter className='full'>Full</Flex>
                   }
 
                   <footer className='eachPrison' key={index}>
@@ -59,23 +68,21 @@ export default class Prisons extends Component {
                         <span>LGA: </span>
                         <span> {prison.prisonLGA} </span>
                       </small>
+                      <Flex className='prisonManager' alignCenter>
+                        <span>Prison Manager: </span>
+                        <div className='mdname'> 
+                          {prison.prisonManager}
+                          <Flex className='mdImg' alignCenter justifyCenter>
+                            <img src={require('../image/6.jpeg')} />
+                            <small>{prison.prisonManagerPhone}</small>
+                          </Flex>
+                        </div>
+
+                      </Flex>
                     </Flex>
                   </footer>
 
-                  <div className='prisonDetail'>
-                    <p>
-                      <span>{prison.prisonDetail && ' More Details :'} </span>
-                      <p>{prison.prisonDetail}</p>
-                    </p>
-                    <p>
-                      <span>{prison.prisonManager && 'Prison Manager'} </span>
-                      <p>{prison.prisonManager}</p>
-                    </p>
-                    <p>
-                      <span>{prison.prisonManagerPhone && 'Contact'} </span>
-                      <p>{prison.prisonManagerPhone}</p>
-                    </p>
-                  </div>
+
                 </div>
               ))
                 : <p>No Prison</p>
