@@ -51,7 +51,7 @@ export const PrisonsMain = styled.div`
                   padding: 5%;
                   opacity: 0;
                   overflow: hidden;
-                  > p  {
+                  > div  {
                     position: relative;
                     z-index: 3;
                     > span {
@@ -59,7 +59,7 @@ export const PrisonsMain = styled.div`
                       text-decoration: underline;
                       color: #c1c1c1
                     }
-                    > p {
+                    > small {
                       font-size: 14px
                     }
                   }

@@ -1,12 +1,31 @@
 import React, { Component } from 'react';
 import { PrisonsMain } from '../styles/PrisonsStyle';
+import { RehabMain } from '../styles/RehabCenterStyles';
 import Menu from '../faetures/Menu';
 import { Flex } from '../styles/LandingStyles';
+import { Button } from '../styles/ButtonStyles';
+import { IoIosAdd, IoMdClose } from "react-icons/io";
+import Modal from '../faetures/Modal'
 
 
-export default class Prisons extends Component {
+export default class RehabCenter extends Component {
+  state = {
+    addRehab: undefined,
+    show: false
+  }
 
+  showModal = () => {
+    console.log('this.state.show')
+    console.log(this.state.show)
+  };
 
+  hideModal = () => {
+    this.setState({ show: false });
+  };
+
+  displayRehab = () => {
+    this.setState({ show: true });
+  }
 
   render() {
     let menus = [
@@ -20,6 +39,7 @@ export default class Prisons extends Component {
       },
     ]
     let prisons = JSON.parse(localStorage.getItem('prisons'))
+    let rehab = JSON.parse(localStorage.getItem('rehab'))
 
 
     // prisonName, prisonManager, mdImage,  prisonState, prisonLGA, prisonDetail, prisonImage
@@ -30,7 +50,7 @@ export default class Prisons extends Component {
 
         <section>
           <aside>
-            <h1>ALL PRISONS</h1>
+            <h1>ALL REHAB CENTERS</h1>
             <p>List of all Nigeria prisons</p>
           </aside>
           <Flex gap className='prison'>
@@ -39,10 +59,10 @@ export default class Prisons extends Component {
 
                 <div key={index}>
                   <div className='prisonImg'>
-                    <img src={require('../image/prison.jpg')} />
+                    <img src={require('../image/rehab.jpg')} />
 
                     <div className='prisonDetail'>
-                      <Flex column>
+                      <Flex column> 
                         <span>{prison.prisonDetail && ' More Details :'} </span>
                         <small>{prison.prisonDetail}</small>
                       </Flex>
@@ -70,7 +90,7 @@ export default class Prisons extends Component {
                       </small>
                       <Flex className='prisonManager' alignCenter>
                         <span>Prison Manager: </span>
-                        <div className='mdname'> 
+                        <div className='mdname'>
                           {prison.prisonManager}
                           <Flex className='mdImg' alignCenter justifyCenter>
                             <img src={require('../image/6.jpeg')} />
@@ -85,10 +105,49 @@ export default class Prisons extends Component {
 
                 </div>
               ))
-                : <p>No Prison</p>
+                : <p>No Rehab Center</p>
             }
           </Flex>
         </section>
+
+        <RehabMain>
+          <Modal show={this.state.show} handleClose={this.hideModal}>
+            {
+              rehab  ? rehab.map((prison, index) => (
+                <Flex key={index}>
+                  <div className='rehabImgs'>
+                    <img src={require('../image/rehab.jpg')} />
+                  </div>
+                  <Flex className='rehabDetail' column>
+                    <h1>{prison.prisonName}</h1>
+                    <Flex alignCenter>
+                      <div>
+                        <p>
+                          <small>State: </small>
+                          <small>{prison.prisonState}</small>
+                        </p>
+                        <p>
+                          <small>LGA: </small>
+                          <small>{prison.prisonLGA}</small>
+                        </p>
+                      </div>
+                      <Flex alignCenter className='accDecBtns'>
+                        <Button SM RGreen> Accept</Button>
+                        <Button SM > Decline</Button>
+                      </Flex>
+                    </Flex>
+                  </Flex>
+                </Flex>
+              )) 
+              : 'No rehab Center'
+            }
+          </Modal>
+
+
+          <Button className='addBtn' onClick={this.displayRehab}>
+            <IoIosAdd />
+          </Button>
+        </RehabMain>
       </PrisonsMain>
     );
   }
