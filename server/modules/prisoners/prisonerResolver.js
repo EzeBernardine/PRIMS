@@ -10,7 +10,11 @@ const resolvers = {
    }
   },
   Mutation: {
-    
+    addPrisoner: async(_, {data}) => {
+      const newPrisoner = await new Prisoner(data);
+      await newPrisoner.save();
+      return 'Prisoner saved'
+    }
   }
 }
 
