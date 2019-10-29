@@ -14,19 +14,18 @@ export default class AddPrisons extends Component {
 
   checkNewPrisoner = (values, resetForm) => {
     // new prisoner's record  to be saved in database
-    let { prisonName, prisonManager, mdImage, prisonState, prisonLGA, prisonDetail, prisonImage } = values
+    let { prisonName, prisonManager, mdImage, prisonState, prisonLGA, prisonDetail, prisonImage, prisonManagerPhone } = values
 
-    // reseting the add prisoner form
-    resetForm()
-
-
+    
+    
     // pushing all prison records into an empty array
-    prisons.push({ prisonName, prisonManager, mdImage, prisonState, prisonLGA, prisonDetail, prisonImage })
-
+    prisons.push({ prisonName, prisonManager, mdImage, prisonState, prisonLGA, prisonDetail, prisonImage, prisonManagerPhone })
+    
     // storing data to local storage
     localStorage.setItem('prisons', JSON.stringify(prisons))
-
-    console.log(JSON.parse(localStorage.getItem('prisons')))
+    
+    // reseting the add prisoner form
+    resetForm()
   }
 
 
