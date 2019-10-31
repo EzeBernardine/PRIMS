@@ -62,7 +62,7 @@ export default class RehabCenter extends Component {
                     <img src={require('../image/rehab.jpg')} />
 
                     <div className='prisonDetail'>
-                      <Flex column> 
+                      <Flex column>
                         <span>{prison.prisonDetail && ' More Details :'} </span>
                         <small>{prison.prisonDetail}</small>
                       </Flex>
@@ -112,23 +112,27 @@ export default class RehabCenter extends Component {
 
         <RehabMain>
           <Modal show={this.state.show} handleClose={this.hideModal}>
+            <aside>
+              <aside onClick={this.hideModal}>< IoMdClose /></aside>
+              <h1>SELECT REHAB CENTER</h1>
+            </aside>
             {
-              rehab  ? rehab.map((prison, index) => (
+              rehab ? rehab.map((rehab, index) => (
                 <Flex key={index}>
                   <div className='rehabImgs'>
                     <img src={require('../image/rehab.jpg')} />
                   </div>
                   <Flex className='rehabDetail' column>
-                    <h1>{prison.prisonName}</h1>
+                    <h1>{rehab.rehabCenterName}</h1>
                     <Flex alignCenter>
                       <div>
                         <p>
                           <small>State: </small>
-                          <small>{prison.prisonState}</small>
+                          <small>{rehab.rehabState}</small>
                         </p>
                         <p>
                           <small>LGA: </small>
-                          <small>{prison.prisonLGA}</small>
+                          <small>{rehab.rehabLGA}</small>
                         </p>
                       </div>
                       <Flex alignCenter className='accDecBtns'>
@@ -138,8 +142,8 @@ export default class RehabCenter extends Component {
                     </Flex>
                   </Flex>
                 </Flex>
-              )) 
-              : 'No rehab Center'
+              ))
+                : 'No rehab Center'
             }
           </Modal>
 
