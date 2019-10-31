@@ -30,7 +30,7 @@ export default class Landing extends Component {
         <ul>
           {
             menus.map((menu, index) => (
-              <li><NavLink key={index} to ={menu.to}>{menu.name}</NavLink></li>
+              <li key={index} ><NavLink to ={menu.to}>{menu.name}</NavLink></li>
             ))
           }
         </ul>

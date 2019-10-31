@@ -38,27 +38,33 @@ export  const RehabModal = styled.div`
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     width:100%;
     height: 100%;
     background: #221c18b5;
     z-index: 10000;
 
     .modal-main {
-        position:fixed;
+        position: absolute;
         background: white;
+        overflow-y: scroll;
         width: 60%;
         height: auto;
-        top:50%;
-        left:50%;
-        padding: 5%;
-        transform: translate(-50%,-50%);
-        display: flex;
-        flex-direction: column;
-        grid-gap: 30px;
+        top: 12%;
+        bottom: 12%;
+        left: 0%;
+        right: 0%;
+        margin: auto;
         @media (max-width: 500px) {
             width: 80%
         }
         > div {
+            padding: 5%;
+            display: flex;
+            flex-direction: column;
+            grid-gap: 30px;
+           > div {
             box-shadow: 0 4px 5px 0px #e1e1e1;
             grid-gap: 5px;
             border: 1px solid #f2f2f2;
@@ -91,10 +97,22 @@ export  const RehabModal = styled.div`
                     }
                 }
             }
-        } 
-        > button {
-            align-self: flex-end
+            } 
+            > button {
+                align-self: flex-end
+            }
+            > aside {
+                > h1 {font-size: 1.5em; color: #4a4542}
+                > aside > svg {
+                    float: right;
+                    font-size: 30px;
+                    color: #707070;
+                    :hover {
+                    cursor: pointer;
+                    }
+                }
+            }
         }
     }
 
-`
+`   
