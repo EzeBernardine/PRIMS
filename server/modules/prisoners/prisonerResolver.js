@@ -1,4 +1,5 @@
 const Prisoner = require('./models/prisoner');
+const {UserInputError} = require('apollo-server-express')
 
 const resolvers = {
   Query: {
@@ -12,8 +13,21 @@ const resolvers = {
   Mutation: {
     addPrisoner: async(_, {data}) => {
       const newPrisoner = await new Prisoner(data);
-      await newPrisoner.save();
+      try{
+        await newPrisoner.save();
+      }catch(error){
+        throw new UserInputError(error.message,{
+          invalidArgs: data
+        })
+      }
       return 'Prisoner saved'
+    },
+    editPrisoner: async(_ ,args) => {
+      const person = await Prisoner.findOne({_id: args.id})
+      person.name = args.name
+      person.nationality = args.nationality
+      await person.save()
+      return 'User edited successfully'
     }
   }
 }
