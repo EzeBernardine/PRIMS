@@ -5,6 +5,8 @@ import { NavLink } from 'react-router-dom';
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 let yup = require('yup');
+import {Mutation} from 'react-apollo'
+import {ADD_PRISONER, ALL_PRISONERS} from './queries'
 
 
 const prisoners = []
@@ -224,6 +226,31 @@ export default class AddPrisoner extends Component {
   }
 }
 
+
+<Mutation mutation = {ADD_PRISONER} refetchQueries = {[{query: ALL_PRISONERS}]}>
+  {
+    (addprisoner) => {
+      <Prisoner addprisoner = {addprisoner}/>
+    }
+  }
+</Mutation>
+
+const prisonerForm = ({addprisoner}) => {
+  handleSubmit = async(e) => {
+    e.preventDefault()
+    await addprisoner({
+      variables: {
+        name,
+        nationality,
+        age,
+        story,
+        gender,
+        LGA,
+        state,
+      }
+    })
+  }
+}
 
 
 

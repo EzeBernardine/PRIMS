@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { AllprisonerMain } from '../styles/AllPrisonersStyles';
 import Menu from '../faetures/Menu';
+import { Query } from 'react-apollo';
+import { ALL_PRISONERS } from './queries';
 
 
 // let prisoners = [
@@ -144,56 +146,68 @@ export default class AllPrisoners extends Component {
 
 
     let prisoners = JSON.parse(localStorage.getItem('prisoners'))
-    
+
 
 
     return (
-      <AllprisonerMain>
-        <Menu menus={menus} />
+      <Query query={ALL_PRISONERS}>
+        {
+          ({ loading, data }) => {
+            if (loading) {
+              return <div>Loading....</div>
+            }
+            return (
+              <AllprisonerMain>
+                <Menu menus={menus} />
 
-        <div className='prisonBakImg'></div>
+                <div className='prisonBakImg'></div>
 
-        <div className='prisonersDiv'>
-          {
-            prisoners ? prisoners.map((prisoner, index) => (
+                <div className='prisonersDiv'>
+                  {
+                    data.prisoners ? data.prisoners.map((prisoner, index) => (
 
-              <section key={index}>
-                <h1>{prisoner.state}</h1>
-                <div className='prisonersContainer'>
-                  <div className='eachPrisoner' onClick={this.prisonerDetail} key={index}>
-                    <div className='prisonerImgDiv'>
-                      <img src={prisoner.img}></img>
-                    </div>
-                    <div className='personalDetail'>
-                      <p>
-                        <span>Name: </span>
-                        <span>{prisoner.name}</span>
-                      </p>
-                      <p>
-                        <span>Age: </span>
-                        <span >{prisoner.currentAge} </span>
-                      </p>
-                      <p>
-                        <span>Gender: </span>
-                        <span >{prisoner.gender} </span>
-                      </p>
-                      <p className='duration'>
-                        <small>{prisoner.dateImprisoned} _{prisoner.dateReleased} </small>
-                      </p>
-                      <p className='duration'>
-                        <span>Time: </span>
-                        <small>{prisoner.timeReleased} </small>
-                      </p>
-                    </div>
-                  </div>
+                      <section key={index}>
+                        <h1>{prisoner.state}</h1>
+                        <div className='prisonersContainer'>
+                          <div className='eachPrisoner' onClick={this.prisonerDetail} key={index}>
+                            <div className='prisonerImgDiv'>
+                              <img src={prisoner.image}></img>
+                            </div>
+                            <div className='personalDetail'>
+                              <p>
+                                <span>Name: </span>
+                                <span>{prisoner.name}</span>
+                              </p>
+                              <p>
+                                <span>Nationality: </span>
+                                <span >{prisoner.nationality} </span>
+                              </p>
+                              <p>
+                                <span>Gender: </span>
+                                <span >{prisoner.gender} </span>
+                              </p>
+                              <p className='duration'>
+                                <small>{prisoner.dateImprisoned} _{prisoner.dateReleased} </small>
+                              </p>
+                              <p className='duration'>
+                                <span>Time: </span>
+                                <small>{prisoner.timeReleased} </small>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                    ))
+                      : <p>No Prisoners</p>
+                  }
+
                 </div>
-              </section>
-            ))
-              : <p>No Prisoners</p>
-          }
+              </AllprisonerMain>
+            )
 
-        </div>
-      </AllprisonerMain>
+          }
+        }
+      </Query>
     );
   }
 }
