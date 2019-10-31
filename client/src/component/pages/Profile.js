@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ProfileCounter } from '../styles/ProfileStyles';
 import Menu from '../faetures/Menu';
 import { FaUserPlus } from "react-icons/fa";
-import { IoIosPersonAdd, IoIosHome, IoIosPeople, IoIosAdd } from "react-icons/io";
+import { IoIosPersonAdd, IoIosHome, IoIosPeople, IoIosAdd, IoMdLogOut } from "react-icons/io";
 import { Button } from '../styles/ButtonStyles';
 import {NavLink} from 'react-router-dom'
 
@@ -43,7 +43,8 @@ export default class AddPrisoner extends Component {
                 <li><NavLink to='/addStaff'> <FaUserPlus /> <span>ADD STAFF</span></NavLink></li>
                 <li><NavLink to='/allprisoners'><IoIosPeople /> <span>ALL PRISONER</span></NavLink></li>
                 <li><NavLink to='/addPrisons'><IoIosAdd /> <span>ADD PRISON</span></NavLink></li>
-                {/* <li><NavLink to='#'><IoIosHome /> <span>REHAB CENTER</span></NavLink></li> */}
+                <li><NavLink to='/rehabcenters'><IoIosHome /> <span>REHAB CENTERS</span></NavLink></li>
+                <li><NavLink to='/'><IoMdLogOut /> <span>LOGOUT</span></NavLink></li>
               </ul>
             </div>
           </aside>

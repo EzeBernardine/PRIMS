@@ -9,13 +9,31 @@ export const Button = styled.button`
 background: ${props => 
         props.dark ? '#ac5f3b' 
         :  props.red ? 'red' 
-            : '#ff5000'  
+            :  props.RGreen ? '#fff' 
+                : '#ff5000'  
     };
-border: none;
-height: 51px;
-width: 203px;
-border-radius: 57px;
-color: white;
+border:  ${props => 
+            props.dark ? '1px solid #ac5f3b' 
+                : props.red ? '1px solid red' 
+                    : props.RGreen ? '1px solid green' 
+                        : '1px solid #ff5000'  
+        };
+height: ${props => 
+        props.SM ? 'max-content' 
+            : '51px'  
+    };
+width: ${props => 
+        props.SM ? 'max-content' 
+            : '203px'  
+    };
+border-radius: ${props => 
+        props.SM ? '5px' 
+            : '57px'  
+    };
+color: ${props => 
+          props.RGreen ? 'green' 
+                : '#fff'  
+    };
 cursor: pointer;
 font-weight: bold;
     :focus {
@@ -25,14 +43,19 @@ font-weight: bold;
         border: ${props => 
             props.dark ? '1px solid #ac5f3b' 
                 : props.red ? '1px solid red' 
-                    : '1px solid #ff5000'  
+                    : props.RGreen ? '1px solid green' 
+                        : '1px solid #ff5000'  
         };
         color:  ${props => 
             props.dark ? '#ac5f3b' 
                 : props.red ? 'red' 
+                : props.RGreen ? '#fff' 
                 : '#ff5000'  
         };;
-        background: white;
+        background:  ${props => 
+                     props.RGreen ? 'green' 
+                        : '#fff'  
+            };
     }
 
 `

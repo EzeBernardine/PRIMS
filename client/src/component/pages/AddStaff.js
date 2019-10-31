@@ -17,7 +17,7 @@ export default class AddStaff extends Component {
 
   checkNewPrisoner = (values, resetForm) => {
     // new prisoner's record  to be saved in database
-    let { name, email, position, gender, age, prisonunit, nationality, state, lga, image } = values
+    let { name, email, position, gender, age, nationality, state, lga, image } = values
     let currentAge = this.getAge(age)
 
     // reseting the add prisoner form
@@ -25,7 +25,7 @@ export default class AddStaff extends Component {
 
 
     // pushing all prison records into an empty array
-    staffs.push({ name, email, state, nationality, position, prisonunit, gender, currentAge, state, lga, image })
+    staffs.push({ name, email, state, nationality, position, gender, currentAge, state, lga, image })
 
     // storing data to local storage
     localStorage.setItem('prisoners', JSON.stringify(staffs))
@@ -43,7 +43,6 @@ export default class AddStaff extends Component {
       gender: yup.string().required(),
       age: yup.string().required(),
       position: yup.string().required(),
-      prisonunit: yup.string().required(),
       nationality: yup.string().required(),
       image: yup.mixed().required('A file is required')
     });
@@ -59,9 +58,9 @@ export default class AddStaff extends Component {
         <Flex>
           <div>
 
-            <h1>ADD SATFF</h1>
+            <h1>ADD STAFF</h1>
             <Formik
-              initialValues={{ name: '', email: '', nationality: '', gender: '', age: '', state: '', lga: '', story: '', position: '', prisonunit: '', image: '' }}
+              initialValues={{ name: '', email: '', nationality: '', gender: '', age: '', state: '', lga: '', story: '', position: '',  image: '' }}
               onSubmit={(values, { setSubmitting, resetForm }) => {
                 setTimeout(() => {
                   this.checkNewPrisoner(values, resetForm)
@@ -89,7 +88,7 @@ export default class AddStaff extends Component {
                       <Flex>
                         <Field component="select" name="gender">
                           <option value='Male'> Male </option>
-                          <option value='Female'> Femail </option>
+                          <option value='Female'> Female </option>
                         </Field>
                         <ErrorMessage name="gender" component="small" />
                       </Flex>
@@ -104,9 +103,6 @@ export default class AddStaff extends Component {
 
                     <Field type="text" name="position" placeholder='Position' />
                     <ErrorMessage name="position" component="small" />
-
-                    <Field type="text" name="prisonunit" placeholder='Prison Unit' />
-                    <ErrorMessage name="prisonunit" component="small" />
 
                     <Flex className='secEle'>
                       <Field type="file" name="image" className="inputfile" />
