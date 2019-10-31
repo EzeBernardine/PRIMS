@@ -4,6 +4,7 @@ import { Button } from '../styles/ButtonStyles';
 import { NavLink } from 'react-router-dom';
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { ShowMessage, type } from "../../../../components/Toaster/ShowMessage";
 let yup = require('yup');
 import {Mutation} from 'react-apollo'
 import {ADD_PRISONER, ALL_PRISONERS} from './queries'
@@ -104,7 +105,7 @@ export default class AddPrisoner extends Component {
                       <Flex>
                         <Field component="select" name="gender">
                           <option value='Male'> Male </option>
-                          <option value='Female'> Femail </option>
+                          <option value='Female'> Female </option>
                         </Field>
                         <ErrorMessage name="gender" component="small" />
                       </Flex>
@@ -227,7 +228,7 @@ export default class AddPrisoner extends Component {
 }
 
 
-<Mutation mutation = {ADD_PRISONER} refetchQueries = {[{query: ALL_PRISONERS}]}>
+{/* <Mutation mutation = {ADD_PRISONER} awaitRefetchQueries={true} refetchQueries = {[{query: ALL_PRISONERS}]}>
   {
     (addprisoner) => {
       <Prisoner addprisoner = {addprisoner}/>
@@ -249,12 +250,17 @@ const prisonerForm = ({addprisoner}) => {
         state,
       }
     })
+    .then(() => {
+      ShowMessage(type.DONE, "Prisoner Added successfully")
+    }).catch(() => {
+      ShowMessage(type.ERROR, "Error adding prisoner")
+    })
   }
 }
 
 
 
-
+ */}
 
 
 
