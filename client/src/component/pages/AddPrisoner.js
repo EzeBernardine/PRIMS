@@ -105,7 +105,7 @@ export default class AddPrisoner extends Component {
                       <Flex>
                         <Field component="select" name="gender">
                           <option value='Male'> Male </option>
-                          <option value='Female'> Femail </option>
+                          <option value='Female'> Female </option>
                         </Field>
                         <ErrorMessage name="gender" component="small" />
                       </Flex>
