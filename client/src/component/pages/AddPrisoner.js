@@ -228,7 +228,7 @@ export default class AddPrisoner extends Component {
 }
 
 
-<Mutation mutation = {ADD_PRISONER} awaitRefetchQueries={true} refetchQueries = {[{query: ALL_PRISONERS}]}>
+{/* <Mutation mutation = {ADD_PRISONER} awaitRefetchQueries={true} refetchQueries = {[{query: ALL_PRISONERS}]}>
   {
     (addprisoner) => {
       <Prisoner addprisoner = {addprisoner}/>
@@ -261,7 +261,7 @@ const prisonerForm = ({addprisoner}) => {
 
 
 
-
+ */}
 
 
 
