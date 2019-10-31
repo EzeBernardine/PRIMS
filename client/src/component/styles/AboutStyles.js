@@ -29,10 +29,14 @@ export const AboutContainer = styled.div`
         border-top: 3px dotted #ff5000;
         border-bottom: 3px dotted   #ff5000;
           @media(max-width: 800px ) {width: 80%; margin: 0 auto}
-        > p {
-            /* text-align: center */
+        > footer {
+              font-size: 12px;
+            > small {
+              color: #ff5000;
+              /* color: #ac5f3b */
+            }
         }
-      > .contact {
+      /* > .contact {
         border: 1px solid #ffff;
         border-radius: 5px;
         display: flex;
@@ -50,6 +54,6 @@ export const AboutContainer = styled.div`
           flex: 2 2 20%;
           border-radius: 0
         }
-      }
+      } */
     }
 `
