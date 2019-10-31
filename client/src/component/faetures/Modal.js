@@ -7,9 +7,9 @@ const Modal = ({ handleClose, show, children }) => {
   return (
     <RehabModal show={show}>
       <section className="modal-main">
-        < div>
+        <div>
           {children}
-        <Button onClick={handleClose} SM dark>Close</Button>
+          <Button onClick={handleClose} SM dark>Close</Button>
         </div>
       </section>
     </RehabModal>
