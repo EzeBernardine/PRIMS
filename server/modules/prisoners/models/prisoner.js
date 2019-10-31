@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const prisonerSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   nationality: {
     type: String,
@@ -14,7 +15,7 @@ const prisonerSchema = new mongoose.Schema({
     required: true
   },
   DateOfEntry: {
-    type: Date,
+    type: String,
     required: true
   },
   timeOfEntry: {

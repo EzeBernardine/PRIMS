@@ -4,8 +4,9 @@ const typeDefs = gql`
   type Prisoner {
     id: ID!
     name: String
+    gender: String
     nationality: String
-    State: String
+    state: String
     DateOfEntry: String
     timeOfEntry: String
     LGA: String
@@ -23,17 +24,16 @@ const typeDefs = gql`
     deletePrisonerRecord(id: ID): String
   }
 
-  enum Gender {
-    MALE
-    FEMALE
-}
+#   enum Gender {
+#     MALE
+#     FEMALE
+# }
 
   input prisonerInput {
-    id: ID!
     name: String
-    gender: Gender
+    gender: String
     nationality: String
-    State: String
+    state: String
     DateOfEntry: String
     timeOfEntry: String
     LGA: String
