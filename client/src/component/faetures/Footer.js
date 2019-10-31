@@ -3,7 +3,6 @@ import { FooterContainer } from '../styles/FooterStyles';
 import { Button } from '../styles/ButtonStyles';
 import { SignUpContainer, Flex } from '../styles/AddPrisonerStyles';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { IoMdClose } from "react-icons/io";
 let yup = require('yup');
 
 let rehab = []
@@ -11,20 +10,14 @@ export default class Footer extends Component {
   state = {
     rehab: undefined
   }
-
   handleReahebForm = () => {
-    this.setState({ rehab: true })
+    this.setState({rehab: true})
   }
 
-  closeRehab = () => {
-    this.setState({ rehab: false })
-  }
-
-  checkNewRehab = (values, resetForm) => {
+  checkNewPrisoner = (values, resetForm) => {
     // new prisoner's record  to be saved in database
-    console.log('hi')
     let { rehabCenterName, rehabeManager, mdImage, rehabState, rehabLGA, rehabDetail, rehabImage, rehabManagerPhone } = values
-
+    
 
     this.setState({ rehab: false })
 
@@ -34,7 +27,6 @@ export default class Footer extends Component {
     // storing data to local storage
     localStorage.setItem('rehab', JSON.stringify(rehab))
 
-    console.log(JSON.parse(localStorage.getItem('rehab')))
     // reseting the add prisoner form
     resetForm()
   }
@@ -71,11 +63,12 @@ export default class Footer extends Component {
           <SignUpContainer className='form'>
             <div>
               <div>
+                <h1>Register as  Rehab Center</h1>
                 <Formik
                   initialValues={{ rehabCenterName: '', rehabeManager: '', rehabManagerPhone: '', mdImage: '', rehabState: '', rehabLGA: '', rehabDetail: '', rehabImage: '' }}
                   onSubmit={(values, { setSubmitting, resetForm }) => {
                     setTimeout(() => {
-                      this.checkNewRehab(values, resetForm)
+                      this.checkNewPrisoner(values, resetForm)
                       setSubmitting(false);
                     }, 400);
                   }}
