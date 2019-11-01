@@ -48,11 +48,10 @@ export  const RehabModal = styled.div`
     .modal-main {
         position: absolute;
         background: white;
-        overflow-y: scroll;
         width: 60%;
         height: auto;
-        top: 12%;
-        bottom: 12%;
+        top: 3%;
+        bottom: 3%;
         left: 0%;
         right: 0%;
         margin: auto;
@@ -60,56 +59,72 @@ export  const RehabModal = styled.div`
             width: 80%
         }
         > div {
-            padding: 5%;
+            padding: 2%;
             display: flex;
             flex-direction: column;
             grid-gap: 30px;
+            height: 96%;
            > div {
-            box-shadow: 0 4px 5px 0px #e1e1e1;
-            grid-gap: 5px;
-            border: 1px solid #f2f2f2;
-            width: 94%;
-            padding: 3%;
-            color: #707070;
-            > .rehabImgs {
-                flex-basis: 200px;
-                @media (max-width: 842px) {
-                    min-width: 100%
+                overflow-y: scroll;
+                overflow-x: hidden;
+                ::-webkit-scrollbar-thumb {
+                    background-color: #000000;
                 }
-                > img {
-                    width: 100%;
-                    height: auto
-                }
-            }
-            > .rehabDetail {
-                justify-content: space-between;
-                flex: 1;
-                min-width: 270px;
+                ::-webkit-scrollbar {
+                    width: 6px;
+                    background-color: #F5F5F5;
+                } 
                 > div {
-                    justify-content: space-between;
-                    > .accDecBtns {
-                        grid-gap: 5px;
-                        > button {
-                            :hover {
-                                /* padding: initial */
+                    box-shadow: 0 4px 5px 0px #e1e1e1;
+                    grid-gap: 5px;
+                    border: 1px solid #f2f2f2;
+                    width: 93%;
+                    padding: 3%;
+                    color: #707070;
+                    > .rehabImgs {
+                        flex-basis: 200px;
+                        @media (max-width: 842px) {
+                            min-width: 100%
+                        }
+                        > img {
+                            width: 100%;
+                            height: auto
+                        }
+                    }
+                    > .rehabDetail {
+                        justify-content: space-between;
+                        flex: 1;
+                        min-width: 270px;
+                        > h1 {font-size: 1.2em;}
+                        > div {
+                            justify-content: space-between;
+                            > .accDecBtns {
+                                grid-gap: 5px;
                             }
                         }
                     }
-                }
-            }
-            } 
+                } 
+           }
             > button {
                 align-self: flex-end
             }
-            > aside {
-                > h1 {font-size: 1.5em; color: #4a4542}
-                > aside > svg {
-                    float: right;
-                    font-size: 30px;
-                    color: #707070;
-                    :hover {
-                    cursor: pointer;
-                    }
+            > header {
+                display: flex;
+                border-bottom: 2px solid #f0f0f0;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 5px;
+                > h1 {
+                    font-size: 1.5em; color: #4a4542;
+                @media(max-width: 600px) {font-size: 1.1em}
+                }
+                > span > svg {
+                @media(max-width: 600px) {font-size: 1.1em}
+                        font-size: 30px;
+                        color: #707070;
+                        :hover {
+                            cursor: pointer;
+                        }
                 }
             }
         }

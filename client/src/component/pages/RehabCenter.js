@@ -112,39 +112,41 @@ export default class RehabCenter extends Component {
 
         <RehabMain>
           <Modal show={this.state.show} handleClose={this.hideModal}>
-            <aside>
-              <aside onClick={this.hideModal}>< IoMdClose /></aside>
-              <h1>SELECT REHAB CENTER</h1>
-            </aside>
-            {
-              rehab ? rehab.map((rehab, index) => (
-                <Flex key={index}>
-                  <div className='rehabImgs'>
-                    <img src={require('../image/rehab.jpg')} />
-                  </div>
-                  <Flex className='rehabDetail' column>
-                    <h1>{rehab.rehabCenterName}</h1>
-                    <Flex alignCenter>
-                      <div>
-                        <p>
-                          <small>State: </small>
-                          <small>{rehab.rehabState}</small>
-                        </p>
-                        <p>
-                          <small>LGA: </small>
-                          <small>{rehab.rehabLGA}</small>
-                        </p>
-                      </div>
-                      <Flex alignCenter className='accDecBtns'>
-                        <Button SM RGreen> Accept</Button>
-                        <Button SM > Decline</Button>
+            <header>
+              <h1>SELECT REHAB  CENTERS</h1>
+              <span onClick={this.hideModal}>< IoMdClose /></span>
+            </header>
+            <div>
+              {
+                rehab ? rehab.map((rehab, index) => (
+                  <Flex key={index}>
+                    <div className='rehabImgs'>
+                      <img src={require('../image/rehab.jpg')} />
+                    </div>
+                    <Flex className='rehabDetail' column>
+                      <h1>{rehab.rehabCenterName}</h1>
+                      <Flex alignCenter>
+                        <div>
+                          <p>
+                            <small>State: </small>
+                            <small>{rehab.rehabState}</small>
+                          </p>
+                          <p>
+                            <small>LGA: </small>
+                            <small>{rehab.rehabLGA}</small>
+                          </p>
+                        </div>
+                        <Flex alignCenter className='accDecBtns'>
+                          <Button SM RGreen> Accept</Button>
+                          <Button SM > Decline</Button>
+                        </Flex>
                       </Flex>
                     </Flex>
                   </Flex>
-                </Flex>
-              ))
-                : 'No rehab Center'
-            }
+                ))
+                  : 'No rehab Center'
+              }
+            </div>
           </Modal>
 
 

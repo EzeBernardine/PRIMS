@@ -4,8 +4,9 @@ import { Button } from '../styles/ButtonStyles';
 import { NavLink } from 'react-router-dom';
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { ShowMessage, type } from "../../../../components/Toaster/ShowMessage";
-let yup = require('yup');
+// import { ShowMessage, type } from "../../../../components/Toaster/ShowMessage";
+// let yup = require('yup');
+import yup from 'yup'
 import {Mutation} from 'react-apollo'
 import {ADD_PRISONER, ALL_PRISONERS} from './queries'
 
