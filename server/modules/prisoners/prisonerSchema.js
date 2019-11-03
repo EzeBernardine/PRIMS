@@ -4,13 +4,17 @@ const typeDefs = gql`
   type Prisoner {
     id: ID!
     name: String
+    email: String
     gender: String
     nationality: String
     state: String
-    DateOfEntry: String
-    timeOfEntry: String
-    LGA: String
+    dateImprisoned: String
+    dateReleased: String
+    timeImprisoned: String
+    timeReleased: String
+    lga: String
     story: String
+    prisonunit: String
     image: String
   }
 
@@ -31,13 +35,17 @@ const typeDefs = gql`
 
   input prisonerInput {
     name: String
+    email: String
     gender: String
     nationality: String
     state: String
-    DateOfEntry: String
-    timeOfEntry: String
-    LGA: String
+    dateImprisoned: String
+    dateReleased: String
+    timeImprisoned: String
+    timeReleased: String
+    lga: String
     story: String
+    prisonunit: String
     image: String
   }
 
