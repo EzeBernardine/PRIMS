@@ -6,6 +6,10 @@ const prisonerSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
+  email: {
+    type: String,
+    // required: true
+  },
   nationality: {
     type: String,
     required: true
@@ -14,19 +18,31 @@ const prisonerSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  DateOfEntry: {
+  dateImprisoned: {
     type: String,
     required: true
   },
-  timeOfEntry: {
+  dateReleased: {
     type: String,
     required: true
   },
-  LGA: {
+  timeImprisoned: {
+    type: String,
+    // required: true
+  },
+  timeReleased: {
+    type: String,
+    // required: true
+  },
+  lga: {
     type: String,
     required: true
   },
   story: {
+    type: String,
+    required: true
+  },
+  prisonunit: {
     type: String,
     required: true
   },
