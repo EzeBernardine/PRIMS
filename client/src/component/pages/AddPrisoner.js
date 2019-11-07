@@ -3,8 +3,7 @@ import { SignUpContainer, Flex } from '../styles/AddPrisonerStyles';
 import { Button } from '../styles/ButtonStyles';
 import { NavLink } from 'react-router-dom';
 import { Mutation } from 'react-apollo'
-import { ADD_PRISONER, ALL_PRISONERS } from './queries'
-
+import { ADD_PRISONER, ALL_PRISONERS } from './queries';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 // import { ShowMessage, type } from "../../../../components/Toaster/ShowMessage";
 // import {ShowMessage, type} from "../Toaster/ShowMessage"
@@ -12,6 +11,8 @@ let yup = require('yup');
 
 
 const prisoners = []
+
+
 export default class AddPrisoner extends Component {
 
 
@@ -250,9 +251,8 @@ export default class AddPrisoner extends Component {
                         row
                         disabled={isSubmitting}
                       >
-                        {/* <Button  >ADD</Button> */}
-                        <input type="submit" value="Add prisoner" />
-                        {/* <button>Submit</button> */}
+                        <Button  >ADD PRISONER</Button>
+                        {/* <input type="submit" value="Add prisoner" /> */}
                       </Flex>
 
                     </Form>
