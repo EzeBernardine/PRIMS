@@ -70,6 +70,10 @@ export default class Footer extends Component {
           this.state.rehab &&
           <SignUpContainer className='form'>
             <div>
+              <header>
+                <h1> REGISTER AS A REHAB CENTER</h1>
+                <span onClick={this.closeRehab}>< IoMdClose /></span>
+              </header>
               <div>
                 <Formik
                   initialValues={{ rehabCenterName: '', rehabeManager: '', rehabManagerPhone: '', mdImage: '', rehabState: '', rehabLGA: '', rehabDetail: '', rehabImage: '' }}
@@ -89,7 +93,7 @@ export default class Footer extends Component {
 
                         <Flex row className='time'>
                           <Flex>
-                            <Field type="text" name="rehabeManager" placeholder='Manager' />
+                            <Field type="text" name="rehabeManager" placeholder="Manager'name" />
                             <ErrorMessage name="rehabeManager" component="small" />
                           </Flex>
                           <Flex>

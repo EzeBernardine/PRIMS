@@ -30,11 +30,27 @@ export const FooterContainer = styled.div`
       overflow-y: scroll;
     > div {
       background: white;
+       > header {
+          color: #707070;
+          padding: 40px 0;
+          width: 80%;
+          margin: auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+            > h1 {
+              font-size: 1.5em
+            }
+            > span > svg {
+              @media(max-width: 600px) {font-size: 2em}
+                font-size: 30px;
+                :hover {
+                    cursor: pointer;
+                }
+            }
+        }
       > div {
         padding: 40px 0;
-        > h1 {
-          font-size: 1.5em
-        }
       }
     }
   }
