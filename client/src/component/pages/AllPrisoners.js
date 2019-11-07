@@ -3,127 +3,8 @@ import { AllprisonerMain } from '../styles/AllPrisonersStyles';
 import Menu from '../faetures/Menu';
 import { Query } from 'react-apollo';
 import { ALL_PRISONERS } from './queries';
+import { Link } from 'react-router-dom'
 
-
-// let prisoners = [
-//   {
-//     state: 'Imo state',
-//     more: [
-//       {
-//         name: 'hsdhsh grgaerarerager efio',
-//         age: 4654,
-//         dateImprisoned: '14 Jan 2015',
-//         dateReleased: ' 15 June  2015',
-//         rehabCenter: 'Smoke  is bad rehab institute',
-//         gender: 'Female',
-//         Nationality: 'Alminini',
-//         img: require('../image/4.jpg')
-
-//       }
-//     ]
-//   },
-
-
-//   {
-//     state: 'Anambra state',
-//     more: [
-//       {
-//         name: 'hsdhsh grgaerarerager efio',
-//         age: 4654,
-//         dateImprisoned: '14 Jan 2015',
-//         dateReleased: ' 15 June  2015',
-//         rehabCenter: 'Smoke  is bad rehab institute',
-//         gender: 'Female',
-//         Nationality: 'Alminini',
-//         img: require('../image/4.jpg')
-
-//       },
-//       {
-//         name: 'hsdhsh grgaerarerager efio',
-//         age: 4654,
-//         dateImprisoned: '14 Jan 2015',
-//         dateReleased: ' 15 June  2015',
-//         rehabCenter: 'Smoke  is bad rehab institute',
-//         gender: 'Female',
-//         Nationality: 'Alminini',
-//         img: require('../image/4.jpg')
-
-//       },
-//       {
-//         name: 'hsdhsh grgaera nbfhvbh dfydh yrerager efio',
-//         age: 4654,
-//         dateImprisoned: '14 Jan 2015',
-//         dateReleased: ' 15 June  2015',
-//         rehabCenter: 'Smoke  is bad rehab institute',
-//         gender: 'Female',
-//         Nationality: 'Alminini',
-//         img: require('../image/4.jpg')
-
-//       },
-//       {
-//         name: 'hsdhsh grgaerarerager efio',
-//         age: 4654,
-//         dateImprisoned: '14 Jan 2015',
-//         dateReleased: ' 15 June  2015',
-//         rehabCenter: 'Smoke  is bad rehab institute',
-//         gender: 'Female',
-//         Nationality: 'Alminini',
-//         img: require('../image/4.jpg')
-
-//       },
-//       {
-//         name: 'hsdhsh grgaerarerager efio',
-//         age: 4654,
-//         dateImprisoned: '14 Jan 2015',
-//         dateReleased: ' 15 June  2015',
-//         rehabCenter: 'Smoke  is bad rehab institute',
-//         gender: 'Female',
-//         Nationality: 'Alminini',
-//         img: require('../image/4.jpg')
-
-//       },
-//     ]
-//   },
-
-
-//   {
-//     state: 'Abia state',
-//     more: [
-//       {
-//         name: 'hsdhsh grgaerarerager efio',
-//         age: 4654,
-//         dateImprisoned: '14 Jan 2015',
-//         dateReleased: ' 15 June  2015',
-//         rehabCenter: 'Smoke  is bad rehab institute',
-//         gender: 'Female',
-//         Nationality: 'Alminini',
-//         img: require('../image/4.jpg')
-
-//       }
-//     ]
-//   },
-
-
-//   {
-//     state: 'Enugu state',
-//     more: [
-//       {
-//         name: 'hsdhsh grgaerarerager efio',
-//         age: 4654,
-//         dateImprisoned: '14 Jan 2015',
-//         dateReleased: ' 15 June  2015',
-//         rehabCenter: 'Smoke  is bad rehab institute',
-//         gender: 'Female',
-//         Nationality: 'Alminini',
-//         img: require('../image/4.jpg')
-
-//       }
-//     ]
-//   },
-
-
-
-// ]
 export default class AllPrisoners extends Component {
 
 
@@ -145,7 +26,7 @@ export default class AllPrisoners extends Component {
     ]
 
 
-    let prisoners = JSON.parse(localStorage.getItem('prisoners'))
+    // let prisoners = JSON.parse(localStorage.getItem('prisoners'))
 
 
 
@@ -156,6 +37,7 @@ export default class AllPrisoners extends Component {
             if (loading) {
               return <div>Loading....</div>
             }
+            console.log(data)
             return (
               <AllprisonerMain>
                 <Menu menus={menus} />
@@ -164,41 +46,57 @@ export default class AllPrisoners extends Component {
 
                 <div className='prisonersDiv'>
                   {
-                    data.prisoners ? data.prisoners.map((prisoner, index) => (
+                    data.prisoners.length !== 0 ? (data.prisoners.map((prisoner, index) => (
 
                       <section key={index}>
                         <h1>{prisoner.state}</h1>
                         <div className='prisonersContainer'>
-                          <div className='eachPrisoner' onClick={this.prisonerDetail} key={index}>
-                            <div className='prisonerImgDiv'>
-                              <img src={prisoner.image}></img>
+                        <Link to={
+                          {
+                            pathname: '/prisonerdetail',
+                            state: {
+                              prisonerId: prisoner.id
+                            }
+                          }
+                        } >
+
+                            <div className='eachPrisoner' onClick={this.prisonerDetail} key={index}>
+                              <div className='prisonerImgDiv'>
+                                <img src={prisoner.image}></img>
+                              </div>
+                              <div className='personalDetail'>
+                                <p>
+                                  <span>Name: </span>
+                                  <span>{prisoner.name}</span>
+                                </p>
+                                <p>
+                                  <span>Nationality: </span>
+                                  <span >{prisoner.nationality} </span>
+                                </p>
+                                <p>
+                                  <span>Gender: </span>
+                                  <span >{prisoner.gender} </span>
+                                </p>
+                                <p className='duration'>
+                                  <small>{prisoner.dateImprisoned} _{prisoner.dateReleased } </small>
+                                </p>
+                                <p className='duration'>
+                                  <span>Time: </span>
+                                  <small>{prisoner.timeReleased} </small>
+                                </p>
+                              </div>
                             </div>
-                            <div className='personalDetail'>
-                              <p>
-                                <span>Name: </span>
-                                <span>{prisoner.name}</span>
-                              </p>
-                              <p>
-                                <span>Nationality: </span>
-                                <span >{prisoner.nationality} </span>
-                              </p>
-                              <p>
-                                <span>Gender: </span>
-                                <span >{prisoner.gender} </span>
-                              </p>
-                              <p className='duration'>
-                                <small>{prisoner.dateImprisoned} _{prisoner.dateReleased} </small>
-                              </p>
-                              <p className='duration'>
-                                <span>Time: </span>
-                                <small>{prisoner.timeReleased} </small>
-                              </p>
-                            </div>
+                        </Link>
                           </div>
-                        </div>
                       </section>
-                    ))
-                      : <p>No Prisoners</p>
+                    )))
+                      : (<p style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        fontSize: '28px'
+                      }}>No Prisoners Available</p>)
                   }
 
                 </div>

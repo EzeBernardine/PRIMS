@@ -6,7 +6,7 @@ const resolvers = {
    prisoners: async() => {
      return await Prisoner.find({})
    },
-   prisoner: async ({id}) => {
+   prisoner: async (_, {id}) => {
      return await Prisoner.findOne({_id: id})
    }
   },
@@ -22,13 +22,17 @@ const resolvers = {
       }
       return 'Prisoner saved'
     },
-    editPrisoner: async(_ ,args) => {
-      const person = await Prisoner.findOne({_id: args.id})
-      person.name = args.name
-      person.nationality = args.nationality
-      await person.save()
-      return 'User edited successfully'
+    deletePrisonerRecord: async(_, {id}) => {
+      await Prisoner.findByIdAndDelete({_id: id})
+      return 'Prisoner deleted successfuly'
     }
+    // editPrisoner: async(_ ,args) => {
+    //   const person = await Prisoner.findOne({_id: args.id})
+    //   person.name = args.name
+    //   person.nationality = args.nationality
+    //   await person.save()
+    //   return 'User edited successfully'
+    // }
   }
 }
 

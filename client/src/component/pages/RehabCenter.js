@@ -113,7 +113,7 @@ export default class RehabCenter extends Component {
         <RehabMain>
           <Modal show={this.state.show} handleClose={this.hideModal}>
             <header>
-              <h1>SELECT REHAB  CENTERS</h1>
+              <h1>SELECT REHAB  CENTERS </h1>
               <span onClick={this.hideModal}>< IoMdClose /></span>
             </header>
             <div>

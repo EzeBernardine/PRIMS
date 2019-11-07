@@ -45,31 +45,35 @@ export const AllprisonerMain = styled.div`
                 grid-gap: 30px;
                 width: 80%;
                 margin: auto;
-                > .eachPrisoner{
-                    display: flex;
-                    flex-wrap: wrap;
-                    width: 300px;
-                    grid-gap: 5%;
-                    padding: 5px;
-                    background: white;
-                    box-shadow: 0 4px 5px 0px #f4f1f1;
-                    :hover {
-                        box-shadow: 0 4px 5px 0px #e1e1e1;
-                        cursor: pointer;
-                    }
-                    > .prisonerImgDiv {
-                        width: 45%;
-                        > img {width: 100%}
-                    }
-                    > .personalDetail {
-                        width: 50%;
-                        font-size: 11px;
-                        > .duration {
-                            color: red;
-                            font-size: 10px;
+                 > a {
+                     text-decoration: none;
+                     color: unset;
+                        > .eachPrisoner{
+                            display: flex;
+                            flex-wrap: wrap;
+                            width: 300px;
+                            grid-gap: 5%;
+                            padding: 5px;
+                            background: white;
+                            box-shadow: 0 4px 5px 0px #f4f1f1;
+                            :hover {
+                                box-shadow: 0 4px 5px 0px #e1e1e1;
+                                cursor: pointer;
+                            }
+                            > .prisonerImgDiv {
+                                width: 45%;
+                                > img {width: 100%}
+                            }
+                            > .personalDetail {
+                                width: 50%;
+                                font-size: 11px;
+                                > .duration {
+                                    color: red;
+                                    font-size: 10px;
+                                }
+                            }
                         }
-                    }
-                }
+                 }
             }
        }
     }

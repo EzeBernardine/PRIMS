@@ -10,6 +10,9 @@ import AddPrisons from '../component/pages/AddPrisons';
 import RehabCenter from '../component/pages/RehabCenter';
 import PrisonerDetail from '../component/pages/PrisonerDetail';
 // import NotFound from '../component/NotFound';
+const NotFound = () => <h1>Oops not found..</h1>
+
+
 
 const Router = () => (
   <BrowserRouter>
@@ -24,7 +27,7 @@ const Router = () => (
         <Route path="/prisons" component={Prisons} exact={true} />
         <Route path="/rehabcenters" component={RehabCenter} exact={true} />
         <Route path="/prisonerdetail" component={PrisonerDetail} exact={true} />
-        {/* <Route component={NotFound} /> */}
+        <Route component={NotFound} />
       </Switch>
     </div>
   </BrowserRouter>

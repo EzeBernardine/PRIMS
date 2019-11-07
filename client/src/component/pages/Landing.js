@@ -13,10 +13,6 @@ export default class Landing extends Component {
   render() {
     let menus = [
       {
-        name: 'PROFILE',
-        to: '/profile'
-      },
-      {
         name: 'PRISONSERS',
         to: '/allprisoners'
       },
@@ -27,6 +23,10 @@ export default class Landing extends Component {
       {
         name: 'CATEGORIES',
         to: '/#'
+      },
+      {
+        name: 'LOG IN',
+        to: '/profile'
       },
     ]
     return (
