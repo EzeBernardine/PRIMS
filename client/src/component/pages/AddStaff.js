@@ -17,7 +17,7 @@ export default class AddStaff extends Component {
 
   checkNewPrisoner = (values, resetForm) => {
     // new prisoner's record  to be saved in database
-    let { name, email, position, gender, age, nationality, state, lga, image } = values
+    let { name, email, password, position, gender, age, nationality, state, lga, image } = values
     let currentAge = this.getAge(age)
 
     // reseting the add prisoner form
@@ -25,7 +25,7 @@ export default class AddStaff extends Component {
 
 
     // pushing all prison records into an empty array
-    staffs.push({ name, email, state, nationality, position, gender, currentAge, state, lga, image })
+    staffs.push({ name, email, password, state, nationality, position, gender, currentAge, state, lga, image })
 
     // storing data to local storage
     localStorage.setItem('prisoners', JSON.stringify(staffs))
@@ -38,6 +38,7 @@ export default class AddStaff extends Component {
     let schema = yup.object().shape({
       name: yup.string().required(),
       email: yup.string().email(),
+      password: yup.string().email(),
       state: yup.string().required(),
       lga: yup.string().required(),
       gender: yup.string().required(),
@@ -60,7 +61,7 @@ export default class AddStaff extends Component {
 
             <h1>ADD STAFF</h1>
             <Formik
-              initialValues={{ name: '', email: '', nationality: '', gender: '', age: '', state: '', lga: '', story: '', position: '',  image: '' }}
+              initialValues={{ name: '', email: '', password: '', nationality: '', gender: '', age: '', state: '', lga: '', story: '', position: '', image: '' }}
               onSubmit={(values, { setSubmitting, resetForm }) => {
                 setTimeout(() => {
                   this.checkNewPrisoner(values, resetForm)
@@ -77,6 +78,9 @@ export default class AddStaff extends Component {
 
                     <Field type="text" name="email" placeholder='Email Address' />
                     <ErrorMessage name="email" component="small" />
+
+                    <Field type="password" name="password" placeholder="Staff's  Password" />
+                    <ErrorMessage name="password" component="small" />
 
                     <label >Date of Birth and Gender</label>
 
