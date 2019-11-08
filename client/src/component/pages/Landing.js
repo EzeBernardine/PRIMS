@@ -26,7 +26,7 @@ export default class Landing extends Component {
       },
       {
         name: 'LOG IN',
-        to: '/profile'
+        to: '/login'
       },
     ]
     return (

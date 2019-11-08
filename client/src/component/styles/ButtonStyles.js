@@ -8,7 +8,7 @@ export const Button = styled.button`
 /* background: #ff5000; */
 background: ${props => 
         props.dark ? '#ac5f3b' 
-        :  props.red ? 'red' 
+        :  props.red ? '#fff' 
             :  props.RGreen ? '#fff' 
                 : '#ff5000'  
     };
@@ -32,6 +32,7 @@ border-radius: ${props =>
     };
 color: ${props => 
           props.RGreen ? 'green' 
+        :  props.red ? 'red' 
                 : '#fff'  
     };
 cursor: pointer;
@@ -48,12 +49,13 @@ font-weight: bold;
         };
         color:  ${props => 
             props.dark ? '#ac5f3b' 
-                : props.red ? 'red' 
+                : props.red ? '#fff' 
                 : props.RGreen ? '#fff' 
                 : '#ff5000'  
         };;
         background:  ${props => 
-                     props.RGreen ? 'green' 
+                     props.RGreen ? 'green'
+                    :  props.red ? 'red'  
                         : '#fff'  
             };
     }

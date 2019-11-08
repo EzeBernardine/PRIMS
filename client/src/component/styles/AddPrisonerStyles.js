@@ -72,6 +72,13 @@ export const SignUpContainer = styled.div`
           margin: 20px 0 50px 0;
           color: #707070;
         }
+        > header {
+          margin: 20px 0 50px 0;
+          color: #707070;
+          > p {
+            font-size: 14px;
+          }
+        }
 
         form { /* The form and its contents*/
             > div {
