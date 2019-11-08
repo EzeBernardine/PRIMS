@@ -108,6 +108,7 @@ export default class AddPrisoner extends Component {
                       prisonunit,
                       image: "image.jpg"
                     }
+                    console.log(data)
                     await addPrisoner({
                       variables: {
                         data
@@ -151,6 +152,7 @@ export default class AddPrisoner extends Component {
                         <Flex row className='time'>
                           <Flex>
                             <Field component="select" name="state">
+                              <option value = "select state">Select State</option>
                               <option value='Abia'> Abia </option>
                               <option value='Adamawa'> Adamawa </option>
                               <option value='Akwa Ibom'> Akwa Ibom </option>
@@ -270,6 +272,7 @@ export default class AddPrisoner extends Component {
     );
   }
 }
+
 
 
 
