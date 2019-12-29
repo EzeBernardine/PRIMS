@@ -32,6 +32,7 @@ const typeDefs = gql`
   type Mutation{
     addPrisoner(data: prisonerInput): String
     deletePrisonerRecord(id: ID): String
+    addStaff(data: staffInput): String;
   }
 
 #   enum Gender {
@@ -52,6 +53,17 @@ const typeDefs = gql`
     lga: String
     story: String
     prisonunit: String
+    image: String
+  }
+
+  input staffInput {
+    name: String
+    email: String
+    gender: String
+    dateOfBirth: String
+    nationality: String
+    lga: String
+    position: String
     image: String
   }
 
