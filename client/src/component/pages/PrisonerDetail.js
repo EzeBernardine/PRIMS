@@ -140,9 +140,12 @@ export default class PrisonerDetail extends Component {
       {!this.props.location.state ? <Redirect to= '/allprisoners'/>:
       <Query query={GET_PRISONER} variables={{ id: this.props.location.state.prisonerId }}>
         {
-          ({ loading, data }) => {
+          ({ loading,error, data }) => {
             if (loading) {
               return <div>Loading..</div>
+            }
+            if(error){
+              return <div>Error..{error.message}</div>
             }
             console.log(data)
             return (
