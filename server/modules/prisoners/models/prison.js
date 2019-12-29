@@ -24,7 +24,7 @@ const prisonSchema = new mongoose.Schema({
   },
   prisonLGA: {
     type: String,
-    required: true
+    required: true,
   },
   prisonDetail: {
     type: String,
