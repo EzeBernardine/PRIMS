@@ -1,4 +1,5 @@
 const Prisoner = require('./models/prisoner');
+const Staff = require('./models/staff')
 const {UserInputError} = require('apollo-server-express')
 
 const resolvers = {
@@ -26,6 +27,11 @@ const resolvers = {
       await Prisoner.findByIdAndDelete({_id: id})
       return 'Prisoner deleted successfuly'
     },
+    addStaff: async(_, {data}) => {
+      const staffData = await new Staff(data)
+      await staffData.save();
+      return 'Staff data added'
+    }
     // editPrisoner: async(_ ,args) => {
     //   const person = await Prisoner.findOne({_id: args.id})
     //   person.name = args.name
