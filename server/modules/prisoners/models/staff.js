@@ -10,9 +10,33 @@ const staffSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true
+  },
+  dateOfBirth: {
+    type: String,
+    required: true
+  },
+  gender: {
+    type: String,
+    required: true
+  },
+  nationality: {
+    type: String,
+    required: true
+  },
+  lga: {
+    type: String,
+    required: true
+  },
+  position: {
+    type: String,
+    required: true
+  },
+  image: {
+    type: String,
+    required: true
   }
 })
 
-const staff = mongoose.model('staff', staffSchema);
+const Staff = mongoose.model('staff', staffSchema);
 
-module.exports = staff
+module.exports = Staff

@@ -25,7 +25,7 @@ const resolvers = {
     deletePrisonerRecord: async(_, {id}) => {
       await Prisoner.findByIdAndDelete({_id: id})
       return 'Prisoner deleted successfuly'
-    }
+    },
     // editPrisoner: async(_ ,args) => {
     //   const person = await Prisoner.findOne({_id: args.id})
     //   person.name = args.name

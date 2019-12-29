@@ -18,6 +18,12 @@ const typeDefs = gql`
     image: String
   }
 
+  type Person{
+    name: String
+    email: String
+    phoneNum: String
+  }
+
   type Query{
     prisoners: [Prisoner]
     prisoner (id: ID): Prisoner
@@ -53,3 +59,17 @@ const typeDefs = gql`
 `;
 
 module.exports = typeDefs;
+
+
+//Scalar Types -String, Number, Float
+//Object types
+
+//Root Query
+//Query per field
+
+
+//type Query{
+
+//}
+
+
