@@ -18,6 +18,12 @@ const typeDefs = gql`
     image: String
   }
 
+  type Person{
+    name: String
+    email: String
+    phoneNum: String
+  }
+
   type Query{
     prisoners: [Prisoner]
     prisoner (id: ID): Prisoner
@@ -26,6 +32,7 @@ const typeDefs = gql`
   type Mutation{
     addPrisoner(data: prisonerInput): String
     deletePrisonerRecord(id: ID): String
+    addStaff(data: staffInput): String;
   }
 
 #   enum Gender {
@@ -49,7 +56,32 @@ const typeDefs = gql`
     image: String
   }
 
+  input staffInput {
+    name: String
+    email: String
+    gender: String
+    dateOfBirth: String
+    nationality: String
+    lga: String
+    position: String
+    image: String
+  }
+
  
 `;
 
 module.exports = typeDefs;
+
+
+//Scalar Types -String, Number, Float
+//Object types
+
+//Root Query
+//Query per field
+
+
+//type Query{
+
+//}
+
+

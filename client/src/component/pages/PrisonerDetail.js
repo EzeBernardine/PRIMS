@@ -137,182 +137,279 @@ export default class PrisonerDetail extends Component {
     console.log(this.props.location)
     return (
       <>
-        {!this.props.location.state ? <Redirect to='/allprisoners' /> :
-          <Query query={GET_PRISONER} variables={{ id: this.props.location.state.prisonerId }}>
-            {
-              ({ loading, data }) => {
-                if (loading) {
-                  return <div>Loading..</div>
-                }
-                console.log(data)
-                return (
-                  <DetailContainer>
-                    <Menu menus={menus} />
+        {
+          !this.props.location.state ? <Redirect to='/allprisoners' /> :
+            <Query query={GET_PRISONER} variables={{ id: this.props.location.state.prisonerId }}>
+              {
+                ({ loading, error, data }) => {
+                  if (loading) {
+                    return <div>Loading..</div>
+                  }
+                  if (error) {
+                    return <div>Error..{error.message}</div>
+                  }
+                  console.log(data)
+                  return (
+                    <DetailContainer>
+                      <Menu menus={menus} />
 
-                    <section>
-                      <aside className='imgContainer'>
-                        <img src={details.more[0].img} />
-                      </aside>
+                      <section>
+                        <aside className='imgContainer'>
+                          <img src={details.more[0].img} />
+                        </aside>
 
-                      <aside className='credentials'>
-                        <FaEdit />
-                        <p>
-                          <span className='subtitle'>Name:</span>
-                          <span>{data.prisoner.name}</span>
-                        </p>
-                        <p>
-                          <span className='subtitle'>Age</span>
-                          <span>{data.prisoner.age}</span>
-                        </p>
-                        <p>
-                          <span className='subtitle'>Gender</span>
-                          <span>{data.prisoner.gender}</span>
-                        </p>
-                        <p>
-                          <span className='subtitle'>Nationality</span>
-                          <span>{data.prisoner.nationality}</span>
-                        </p>
-                        <p>
-                          <span className='subtitle'>State</span>
-                          <span>{data.prisoner.state}</span>
-                        </p>
-                        <p>{data.prisoner.story}</p>
-                        <p>
-                          <span className='subtitle'>Duration</span>
-                          <small className='date'>{data.prisoner.dateImprisoned}</small>
-                          -
-                          <small className='date'>{data.prisoner.dateReleased}</small>
-                        </p>
-                        <p>
-                          {
-                            details.more[0].tags.map((tag, index) => (
-                              <small key={index} className='tag'>{tag}</small>
-                            ))
-                          }
-                        </p>
-                        <Mutation mutation={DELETE_PRISONER} awaitRefetchQueries={true} refetchQueries={() => [{ query: ALL_PRISONERS }]}>
-                          {
-                            (deletePrisoner) => (
-                              <Button red
-                                onClick={async e => {
-                                  await deletePrisoner({ variables: { id: this.props.location.state.prisonerId } }).then((res) => {
-                                    this.props.history.push("/allprisoners")
-                                  }).catch(error => {
-                                    console.log(error)
-                                  })
-                                  // notify.show("Prisoner was deleted successfully", "success");
-                                }}
-                              >
-                                DELETE RECORD
+                        <aside className='credentials'>
+                          <FaEdit />
+                          <p>
+                            <span className='subtitle'>Name:</span>
+                            <span>{data.prisoner.name}</span>
+                          </p>
+                          <p>
+                            <span className='subtitle'>Age</span>
+                            <span>{data.prisoner.age}</span>
+                          </p>
+                          <p>
+                            <span className='subtitle'>Gender</span>
+                            <span>{data.prisoner.gender}</span>
+                          </p>
+                          <p>
+                            <span className='subtitle'>Nationality</span>
+                            <span>{data.prisoner.nationality}</span>
+                          </p>
+                          <p>
+                            <span className='subtitle'>State</span>
+                            <span>{data.prisoner.state}</span>
+                          </p>
+                          <p>{data.prisoner.story}</p>
+                          <p>
+                            <span className='subtitle'>Duration</span>
+                            <small className='date'>{data.prisoner.dateImprisoned}</small> -
+                            <small className='date'>{data.prisoner.dateReleased}</small>
+                          </p>
+                          <p>
+                            {
+                              details.more[0].tags.map((tag, index) => (
+                                <small key={index} className='tag'>{tag}</small>
+                              ))
+                            }
+                          </p>
+                          <Mutation mutation={DELETE_PRISONER} awaitRefetchQueries={true} refetchQueries={() => [{ query: ALL_PRISONERS }]}>
+                            {
+                              (deletePrisoner) => (
+                                <Button red
+                                  onClick={async e => {
+                                    await deletePrisoner({ variables: { id: this.props.location.state.prisonerId } }).then((res) => {
+                                      this.props.history.push("/allprisoners")
+                                    }).catch(error => {
+                                      console.log(error)
+                                    })
+                                    // notify.show("Prisoner was deleted successfully", "success");
+                                  }}
+                                >
+                                  DELETE RECORD
                         </Button>
-                            )
-                          }
+                              )
+                            }
 
-                        </Mutation>
+                          </Mutation>
 
-                      </aside>
-                    </section>
+                        </aside>
+                      </section>
 
-                    {
-                      this.state.addForm && (
-                        <SignUpContainer className='addRecord' >
-                          <Flex>
-                            <div>
-                              <aside onClick={this.handleCloseForm}>< IoMdClose /></aside>
-                              <h1>ADD RECORD</h1>
-                              <Formik
-                                initialValues={{ analysis: '', tag: '' }}
-                                onSubmit={(values, { setSubmitting }) => {
-                                  setTimeout(() => {
-                                    this.checkNewRecord(values)
-                                    setSubmitting(false);
-                                  }, 400);
-                                }}
-                                validationSchema={schema}
-                              >
-                                {({ isSubmitting }) => (
-                                  <Form>
-                                    <Flex>
-                                      <Field type="text" name="analysis" placeholder='Analysis'
-                                        component="textarea" spellCheck="true" />
-                                      <ErrorMessage name="analysis" component="small" />
-                                      <Field type="text" name="tag" placeholder='Tags. Seperate them with commas' spellCheck="true" />
-                                      <ErrorMessage name="tag" component="small" />
-                                    </Flex>
+                      {
+                        this.state.addForm && (
+                          <SignUpContainer className='addRecord' >
+                            <Flex>
+                              <div>
+                                <aside onClick={this.handleCloseForm}>< IoMdClose /></aside>
+                                <h1>ADD RECORD</h1>
+                                <Formik
+                                  initialValues={{ analysis: '', tag: '' }}
+                                  onSubmit={(values, { setSubmitting }) => {
+                                    setTimeout(() => {
+                                      this.checkNewRecord(values)
+                                      setSubmitting(false);
+                                    }, 400);
+                                  }}
+                                  validationSchema={schema}
+                                >
+                                  {({ isSubmitting }) => (
+                                    <Form>
+                                      <Flex>
+                                        <Field type="text" name="analysis" placeholder='Analysis'
+                                          component="textarea" spellCheck="true" />
+                                        <ErrorMessage name="analysis" component="small" />
+                                        <Field type="text" name="tag" placeholder='Tags. Seperate them with commas' spellCheck="true" />
+                                        <ErrorMessage name="tag" component="small" />
+                                      </Flex>
 
-                                    <Flex
-                                      justifyCenter
-                                      className='btn'
-                                      type="submit"
-                                      disabled={isSubmitting}
-                                    >
-                                      <Button  >Add</Button>
-                                    </Flex>
-                                  </Form>
-                                )}
-                              </Formik>
-                            </div>
-                          </Flex>
-                        </SignUpContainer>
+                                      <Flex
+                                        justifyCenter
+                                        className='btn'
+                                        type="submit"
+                                        disabled={isSubmitting}
+                                      >
+                                        <Button  >Add</Button>
+                                      </Flex>
+                                    </Form>
+                                  )}
+                                </Formik>
+                              </div>
+                            </Flex>
+                          </SignUpContainer>
+                        )
+                      }
+                      {/* return ( */}
+                  {/* <DetailContainer>  */}
+                        <Menu menus={menus} />
+
+                        <section>
+                          <aside className='imgContainer'>
+                            <img src={details.more[0].img} />
+                          </aside>
+
+                          <aside className='credentials'>
+                            <FaEdit />
+                            <p>
+                              <span className='subtitle'>Name:</span>
+                              <span>{data.prisoner.name}</span>
+                            </p>
+                            <p>
+                              <span className='subtitle'>Age</span>
+                              <span>{data.prisoner.age}</span>
+                            </p>
+                            <p>
+                              <span className='subtitle'>Gender</span>
+                              <span>{data.prisoner.gender}</span>
+                            </p>
+                            <p>
+                              <span className='subtitle'>Nationality</span>
+                              <span>{data.prisoner.nationality}</span>
+                            </p>
+                            <p>
+                              <span className='subtitle'>State</span>
+                              <span>{data.prisoner.state}</span>
+                            </p>
+                            <p>{data.prisoner.story}</p>
+                            <p>
+                              <span className='subtitle'>Duration</span>
+                              <small className='date'>{data.prisoner.dateImprisoned}</small>
+                              -
+                              
+                              <small className='date'>{data.prisoner.dateReleased}</small>
+                            </p>
+                            <p>
+                              {
+                                details.more[0].tags.map((tag, index) => (
+                                  <small key={index} className='tag'>{tag}</small>
+                                ))
+                              }
+                            </p>
+                            <Mutation mutation={DELETE_PRISONER} awaitRefetchQueries={true} refetchQueries={() => [{ query: ALL_PRISONERS }]}>
+                              {
+                                (deletePrisoner) => (
+                                  <Button red
+                                    onClick={async e => {
+                                      await deletePrisoner({ variables: { id: this.props.location.state.prisonerId } }).then((res) => {
+                                        this.props.history.push("/allprisoners")
+                                      }).catch(error => {
+                                        console.log(error)
+                                      })
+                                      // notify.show("Prisoner was deleted successfully", "success");
+                                    }}
+                                  >DELETE RECORD </Button>
+                                )
+                              }
+
+                            </Mutation>
+
+                          </aside>
+                        </section>
+
+                        {
+                          this.state.addForm && (
+                            <SignUpContainer className='addRecord' >
+                              <Flex>
+                                <div>
+                                  <aside onClick={this.handleCloseForm}>< IoMdClose /></aside>
+                                  <h1>ADD RECORD</h1>
+                                  <Formik
+                                    initialValues={{ analysis: '', tag: '' }}
+                                    onSubmit={(values, { setSubmitting }) => {
+                                      setTimeout(() => {
+                                        this.checkNewRecord(values)
+                                        setSubmitting(false);
+                                      }, 400);
+                                    }}
+                                    validationSchema={schema}
+                                  >
+                                    {({ isSubmitting }) => (
+                                      <Form>
+                                        <Flex>
+                                          <Field type="text" name="analysis" placeholder='Analysis'
+                                            component="textarea" spellCheck="true" />
+                                          <ErrorMessage name="analysis" component="small" />
+                                          <Field type="text" name="tag" placeholder='Tags. Seperate them with commas' spellCheck="true" />
+                                          <ErrorMessage name="tag" component="small" />
+                                        </Flex>
+
+                                        <Flex
+                                          justifyCenter
+                                          className='btn'
+                                          type="submit"
+                                          disabled={isSubmitting}
+                                        >
+                                          <Button  >Add</Button>
+                                        </Flex>
+                                      </Form>
+                                    )}
+                                  </Formik>
+                                </div>
+                              </Flex>
+                            </SignUpContainer>
+                          )
+                        }
+
+                        <Button className='addBtn' onClick={this.displayAddForm}>
+                          <IoIosAdd />
+                        </Button>
+
+
+
+                        <section className='records'>
+                          <h1>DAILY RECORDS</h1>
+                          <div>
+                            {
+                              this.state.newRecord.map((record, index) => (
+                                < div className='dailyRecord' key={index}>
+                                  <p>  <small className='date'>{record.date}</small>  </p>
+
+                                  <p>
+                                    <small className='subtitle'>Analysis :</small>
+                                    <small className='analysis'>{record.analysis}}</small>
+                                  </p>
+
+                                  <p className='tags'>
+                                    <small>
+                                      {
+                                        record.tags.map((tag, index) => (
+                                          <span className='tag' key={index}>{tag}</span>
+                                        ))
+                                      }
+                                    </small>
+                                  </p>
+                                </div>
+                              ))
+                            }
+                          </div>
+                        </section>
+                      </DetailContainer>
                       )
                     }
-
-                    <Button className='addBtn' onClick={this.displayAddForm}>
-                      <IoIosAdd />
-                    </Button>
-
-
-
-                    <section className='records'>
-                      <h1>DAILY RECORDS</h1>
-                      <div>
-                        {
-                          this.state.newRecord.map((record, index) => (
-                            < div className='dailyRecord' key={index}>
-                              <p>  <small className='date'>{record.date}</small>  </p>
-
-                              <p>
-                                <small className='subtitle'>Analysis :</small>
-                                <small className='analysis'>{record.analysis}}</small>
-                              </p>
-
-                              <p className='tags'>
-                                <small>
-                                  {
-                                    record.tags.map((tag, index) => (
-                                      <span className='tag' key={index}>{tag}</span>
-                                    ))
-                                  }
-                                </small>
-                              </p>
-                            </div>
-                          ))
-                        }
-                      </div>
-                    </section>
-                  </DetailContainer>
-                )
-              }
-            }
-          </Query>}
+                  }
+          </Query>
+          }
       </>
     );
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+          }
+         }
