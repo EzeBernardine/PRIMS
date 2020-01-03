@@ -62,7 +62,7 @@ export default class AllPrisoners extends Component {
 
                             <div className='eachPrisoner' onClick={this.prisonerDetail} key={index}>
                               <div className='prisonerImgDiv'>
-                                <img src={prisoner.image}></img>
+                                <img src={prisoner.image}></img>+
                               </div>
                               <div className='personalDetail'>
                                 <p>
