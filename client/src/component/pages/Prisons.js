@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { PrisonsMain } from '../styles/PrisonsStyle';
-import Menu from '../faetures/Menu';
+import Menu from '../features/Menu';
 import { Flex } from '../styles/LandingStyles';
 
 

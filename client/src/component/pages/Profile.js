@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ProfileCounter } from '../styles/ProfileStyles';
-import Menu from '../faetures/Menu';
+import Menu from '../features/Menu';
 import { FaUserPlus } from "react-icons/fa";
 import { IoIosPersonAdd, IoIosHome, IoIosPeople, IoIosAdd, IoMdLogOut } from "react-icons/io";
 import { Button } from '../styles/ButtonStyles';

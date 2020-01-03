@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { AllprisonerMain } from '../styles/AllPrisonersStyles';
-import Menu from '../faetures/Menu';
+import Menu from '../features/Menu';
 import { Query } from 'react-apollo';
 import { ALL_PRISONERS } from './queries';
 import { Link } from 'react-router-dom'
@@ -62,7 +62,7 @@ export default class AllPrisoners extends Component {
 
                             <div className='eachPrisoner' onClick={this.prisonerDetail} key={index}>
                               <div className='prisonerImgDiv'>
-                                <img src={prisoner.image}></img>
+                                <img src={prisoner.image}></img>+
                               </div>
                               <div className='personalDetail'>
                                 <p>
