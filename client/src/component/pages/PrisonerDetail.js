@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { DetailContainer } from '../styles/PrisonerDetailStyles';
 import { SignUpContainer, Flex } from '../styles/AddPrisonerStyles';
-import Menu from '../faetures/Menu';
+import Menu from '../features/Menu';
 import { Redirect } from 'react-router-dom'
 import { Button } from '../styles/ButtonStyles';
 import { notify } from "react-notify-toast";

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { AllprisonerMain } from '../styles/AllPrisonersStyles';
-import Menu from '../faetures/Menu';
+import Menu from '../features/Menu';
 import { Query } from 'react-apollo';
 import { ALL_PRISONERS } from './queries';
 import { Link } from 'react-router-dom'
