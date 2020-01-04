@@ -25,18 +25,19 @@ export default class LogIn extends Component {
       password: yup.string().required(),
     });
     return (
-      < SignUpContainer >
+      < SignUpContainer   style={{ margin: '0 auto'}}>
         <aside>
           <NavLink to='/'> BACK </NavLink>
 
         </aside>
-        <Flex>
+        <Flex   style={{height: '100vh', margin: '0 auto'}}>
           <div>
             <header>
               <h1>LOG IN</h1>
               <p>You can login only if you are a registered staff or rehab center</p>
             </header>
             <Formik
+          
               initialValues={{ name: '', password: '' }}
               onSubmit={(values, { setSubmitting, resetForm }) => {
                 setTimeout(() => {
@@ -47,7 +48,7 @@ export default class LogIn extends Component {
               validationSchema={schema}
             >
               {({ isSubmitting, handleSubmit }) => (
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} >
                   <Flex>
                     <Field type="text" name="email" placeholder='Email Address' />
                     <ErrorMessage name="email" component="small" />

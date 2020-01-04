@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { StyledCounter, LandingView, Section, Flex } from '../styles/LandingStyles';
-import Menu from '../faetures/Menu';
-import Footer from '../faetures/Footer';
-import History from '../faetures/About'
+import Menu from '../features/Menu';
+import Footer from '../features/Footer';
+import History from '../features/About'
 
 
 

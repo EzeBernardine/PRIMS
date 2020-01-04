@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { PrisonsMain } from '../styles/PrisonsStyle';
 import { RehabMain } from '../styles/RehabCenterStyles';
-import Menu from '../faetures/Menu';
+import Menu from '../features/Menu';
 import { Flex } from '../styles/LandingStyles';
 import { Button } from '../styles/ButtonStyles';
 import { IoIosAdd, IoMdClose } from "react-icons/io";
-import Modal from '../faetures/Modal'
+import Modal from '../features/Modal'
 
 
 export default class RehabCenter extends Component {
