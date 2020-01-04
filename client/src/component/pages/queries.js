@@ -77,3 +77,17 @@ export const DELETE_PRISONER = gql`
     deletePrisonerRecord(id: $id)
 }
 `
+
+
+
+export const ADD_STAFF = gql`
+  mutation($data: staffInput){
+    addStaff(data: $data)
+  }
+`
+
+export const ADD_PRISON = gql`
+  mutation($data: prisonInput) {
+    addPrison(data: $data)
+  }
+`
