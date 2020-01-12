@@ -1,6 +1,21 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+
+
+type Query{
+    prisoners: [Prisoner]
+    prisoner (id: ID): Prisoner
+  }
+
+  type Mutation{
+    addPrisoner(data: prisonerInput): String
+    deletePrisonerRecord(id: ID): String
+    addStaff(data: staffInput): String
+    addPrison(data: prisonInput): String
+  }
+
+
   type Prisoner {
     id: ID!
     name: String
@@ -24,17 +39,7 @@ const typeDefs = gql`
     phoneNum: String
   }
 
-  type Query{
-    prisoners: [Prisoner]
-    prisoner (id: ID): Prisoner
-  }
-
-  type Mutation{
-    addPrisoner(data: prisonerInput): String
-    deletePrisonerRecord(id: ID): String
-    addStaff(data: staffInput): String
-    addPrison(data: prisonInput): String
-  }
+ 
 
 #   enum Gender {
 #     MALE
@@ -61,7 +66,7 @@ const typeDefs = gql`
     name: String
     email: String
     gender: String
-    dateOfBirth: String
+    date: String
     nationality: String
     lga: String
     position: String
