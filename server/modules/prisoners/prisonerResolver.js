@@ -33,7 +33,7 @@ const resolvers = {
       await staffData.save();
       return 'Staff data added'
     },
-    addPrison: async(_, {data}) =>{
+    addPrison: async(_, {data}) => {
       const prison = await new Prison(data)
       await prison.save();
       return 'Prison created successfully'
