@@ -10,7 +10,10 @@ import AddPrisons from '../component/pages/AddPrisons';
 import RehabCenter from '../component/pages/RehabCenter';
 import PrisonerDetail from '../component/pages/PrisonerDetail';
 import Rehab_dashboard from '../component/pages/Rehab_dashboard';
+import AllStaffs from '../component/pages/AllStaffs';
+import Staff_dashboard from '../component/pages/Staff_dashboard';
 import LogIn from '../component/pages/LogIn'
+import SignUp from '../component/pages/SignUp'
 // import NotFound from '../component/NotFound';
 const NotFound = () => <h1>Oops not found..</h1>
 
@@ -29,8 +32,11 @@ const Router = () => (
         <Route path="/prisons" component={Prisons} exact={true} />
         <Route path="/rehabcenters" component={RehabCenter} exact={true} />
         <Route path="/prisonerdetail" component={PrisonerDetail} exact={true} />
+        <Route path="/allStaff" component={AllStaffs} exact={true} />
         <Route path="/login" component={LogIn} exact={true} />
         <Route path="/rehab_dashboard" component={Rehab_dashboard} exact={true} />
+        <Route path="/staff_dashboard" component={Staff_dashboard} exact={true} />
+        <Route path="/sign_up_admin_page" component={SignUp} exact={true} />
         <Route component={NotFound} />
       </Switch>
     </div>

@@ -26,15 +26,12 @@ export default class LogIn extends Component {
     });
     return (
       < SignUpContainer   style={{ margin: '0 auto'}}>
-        <aside>
-          <NavLink to='/'> BACK </NavLink>
-
-        </aside>
+        u
         <Flex   style={{height: '100vh', margin: '0 auto'}}>
           <div>
             <header>
               <h1>LOG IN</h1>
-              <p>You can login only if you are a registered staff or rehab center</p>
+              <p>You can login only if you are an admin, a registered staff or a rehab center.</p>
             </header>
             <Formik
           

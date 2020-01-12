@@ -43,19 +43,19 @@ export const PrisonsMain = styled.div`
                 }
                 > .prisonDetail {
                   position: absolute;
-                  width: 90%;
-                  height: 80%;
+                  width: 100%;
+                  height: 100%;
                   background: #221c188c;
                   top: 0;
                   color: #fff;
-                  padding: 5%;
+                  padding: 0%;
                   opacity: 0;
                   overflow: hidden;
                   > div  {
                     position: relative;
                     z-index: 3;
                     > span {
-                      font-size: 12px;
+                      font-size: 16px;
                       text-decoration: underline;
                       color: #c1c1c1
                     }
