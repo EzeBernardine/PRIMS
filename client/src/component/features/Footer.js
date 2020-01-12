@@ -22,14 +22,14 @@ export default class Footer extends Component {
 
   checkNewRehab = (values, resetForm) => {
     // new prisoner's record  to be saved in database
-    console.log('hi')
+    let tags = values.tag.split(' ').join('').split(',')
     let { rehabCenterName, rehabeManager, mdImage, rehabState, rehabLGA, rehabDetail, rehabImage, rehabManagerPhone } = values
 
 
     this.setState({ rehab: false })
 
     // pushing all prison records into an empty array
-    rehab.push({ rehabCenterName, rehabeManager, mdImage, rehabState, rehabLGA, rehabDetail, rehabImage, rehabManagerPhone })
+    rehab.push({ rehabCenterName, rehabeManager, mdImage, rehabState, rehabLGA, rehabDetail, rehabImage, rehabManagerPhone, tags })
 
     // storing data to local storage
     localStorage.setItem('rehab', JSON.stringify(rehab))
@@ -38,6 +38,8 @@ export default class Footer extends Component {
     // reseting the add prisoner form
     resetForm()
   }
+
+
 
   render() {
 
@@ -48,6 +50,7 @@ export default class Footer extends Component {
       mdImage: yup.mixed().required('A file is required'),
       rehabState: yup.string().required(),
       rehabLGA: yup.string().required(),
+      tag: yup.string().required(),
       rehabDetail: yup
         .string()
         .label('rehabDetail')
@@ -76,7 +79,7 @@ export default class Footer extends Component {
               </header>
               <div>
                 <Formik
-                  initialValues={{ rehabCenterName: '', rehabeManager: '', rehabManagerPhone: '', mdImage: '', rehabState: '', rehabLGA: '', rehabDetail: '', rehabImage: '' }}
+                  initialValues={{ rehabCenterName: '', rehabeManager: '', rehabManagerPhone: '', mdImage: '', rehabState: '', rehabLGA: '', rehabDetail: '', rehabImage: '', tag: '' }}
                   onSubmit={(values, { setSubmitting, resetForm }) => {
                     setTimeout(() => {
                       this.checkNewRehab(values, resetForm)
@@ -90,6 +93,10 @@ export default class Footer extends Component {
                       <Flex>
                         <Field type="text" name="rehabCenterName" placeholder='Name Of Rehab Center' />
                         <ErrorMessage name="rehabCenterName" component="small" />
+
+
+                        <Field type="text" name="tag" placeholder='Areas of administration. Seperate them with commas' spellCheck="true" />
+                        <ErrorMessage name="tag" component="small" />
 
                         <Flex row className='time'>
                           <Flex>
