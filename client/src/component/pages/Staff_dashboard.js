@@ -8,7 +8,7 @@ import {NavLink} from 'react-router-dom'
 
 
 
-export default class AddPrisoner extends Component {
+export default class Staff_dashboard extends Component {
 
   render() {
     let menus = [
@@ -41,8 +41,6 @@ export default class AddPrisoner extends Component {
               <ul>   
                 <li><NavLink to='/addprisoner'> <FaUserPlus /> <span>ADD PRISONER</span></NavLink></li>
                 <li><NavLink to='/allprisoners'><IoIosPeople /> <span>ALL PRISONER</span></NavLink></li>
-                <li><NavLink to='/addPrisons'><IoIosAdd /> <span>ADD PRISON</span></NavLink></li>
-                <li><NavLink to='/addStaff'> <FaUserPlus /> <span>ADD STAFF</span></NavLink></li>
                 <li><NavLink to='/allStaff'> <IoIosPeople /> <span>ALL STAFFS</span></NavLink></li>
                 <li><NavLink to='/rehabcenters'><IoIosHome /> <span>REHAB CENTERS</span></NavLink></li>
                 <li><NavLink to='/'><IoMdLogOut /> <span>LOGOUT</span></NavLink></li>
@@ -80,27 +78,7 @@ export default class AddPrisoner extends Component {
               }
             </aside>
 
-            <div className='profileRecords'>
-              <h1>Prison Records</h1>
-              <div>
-                <p>
-                  <span>No of Staffs: </span>
-                  <span>6545</span>
-                </p>
-                <p>
-                  <span>No of Prisons: </span>
-                  <span>45</span>
-                </p>
-                <p>
-                  <span>No of Prisoners: </span>
-                  <span>45</span>
-                </p>
-                <p>
-                  <span>No of Rehab Centers: </span>
-                  <span>45</span>
-                </p>
-              </div>
-            </div>
+         
 
             <div className='btn'>
             <Button red>Delete Account</Button>
