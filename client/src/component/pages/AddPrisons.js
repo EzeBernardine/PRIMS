@@ -174,6 +174,7 @@ export default class AddPrisons extends Component {
                       </Flex>
   
                       <Field type="text" name="prisonDetail" placeholder='Further Detail (optional)' />
+                        <ErrorMessage name="prisonDetail" component="small" />
   
                       <Flex className='secEle'>
                         <Field type="file" name="prisonImage" className="inputfile" />
