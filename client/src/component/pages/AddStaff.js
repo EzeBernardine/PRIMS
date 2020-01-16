@@ -37,9 +37,10 @@ export default class AddStaff extends Component {
     staffs.push({
       name,
       email,
-      nationality,
       position,
       gender,
+      age,
+      nationality,
       lga,
       image
     });
@@ -53,13 +54,13 @@ export default class AddStaff extends Component {
   render() {
     let schema = yup.object().shape({
       name: yup.string().required(),
-      email: yup.string().email(),
+      email: yup.string().email().required(),
       gender: yup.string().required(),
-      dateOfBirth: yup.string().required(),
+      date: yup.string().required(),
       nationality: yup.string().required(),
       lga: yup.string().required(),
       position: yup.string().required(),
-      // image: yup.mixed().required("A file is required")
+      image: yup.string().required("A file is required")
     });
     return (
       <SignUpContainer>
@@ -79,7 +80,7 @@ export default class AddStaff extends Component {
                     name: "",
                     email: "",
                     gender: "",
-                    dateOfBirth: "",
+                    date: "",
                     nationality: "",
                     lga: "",
                     position: "",
@@ -88,7 +89,7 @@ export default class AddStaff extends Component {
                   onSubmit={async ({name,
                     email,
                     gender,
-                    dateOfBirth,
+                    date,
                     nationality,
                     lga,
                     position,
@@ -97,7 +98,7 @@ export default class AddStaff extends Component {
                       name,
                       email,
                       gender,
-                      dateOfBirth,
+                      date,
                       nationality,
                       lga,
                       position,
@@ -110,7 +111,7 @@ export default class AddStaff extends Component {
                       }
                     }).then((res) => {
                       console.log("res===>", res)
-                      this.props.history.push("/")
+                      this.props.history.push("/profile")
                     }).catch(error => {
                       console.log(error)
                     })
@@ -133,15 +134,14 @@ export default class AddStaff extends Component {
 
 
                         <label>Date of Birth and Gender</label>
-
                         <Flex row className="time">
                           <Flex>
                             <Field
                               type="date"
-                              name="age"
+                              name="date"
                               placeholder="Date of birth"
                             />
-                            <ErrorMessage name="age" component="small" />
+                            <ErrorMessage name="date" component="small" />
                           </Flex>
                           <Flex>
                             <Field component="select" name="gender">

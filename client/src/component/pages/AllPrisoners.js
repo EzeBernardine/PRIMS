@@ -7,6 +7,17 @@ import { Link } from 'react-router-dom'
 
 export default class AllPrisoners extends Component {
 
+  state = {
+    token: ''
+  }
+
+  async componentDidMount(){
+    const getToken = await localStorage.getItem('token')
+    this.setState({
+      token: getToken
+    })
+  }
+
 
   prisonerDetail = (e) => {
     this.props.history.push({ pathname: '/prisonerdetail' })
@@ -14,15 +25,17 @@ export default class AllPrisoners extends Component {
 
 
   render() {
+    const {token} = this .state
     let menus = [
       {
         name: 'PRISONS',
         to: '/prisons'
       },
-      {
-        name: 'PROFILE',
-        to: '/profile'
+       {
+        name: token != null ? 'PROFILE' : 'HOME',
+        to: token != null ? '/profile' : '/',
       },
+      ,
     ]
 
 

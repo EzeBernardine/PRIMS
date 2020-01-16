@@ -11,7 +11,7 @@ const staffSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  dateOfBirth: {
+  date: {
     type: String,
     required: true
   },

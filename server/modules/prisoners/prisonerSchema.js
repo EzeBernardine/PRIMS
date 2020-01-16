@@ -1,6 +1,23 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+
+
+type Query{
+    prisoners: [Prisoner]
+    prisoner (id: ID): Prisoner
+  }
+
+  type Mutation{
+    addPrisoner(data: prisonerInput): String
+    deletePrisonerRecord(id: ID): String
+    addStaff(data: staffInput): String
+    addPrison(data: prisonInput): String
+    signAdmin(data: adminInput): LoginResponse
+    login(data: UserLoginInput!): Token
+  }
+
+
   type Prisoner {
     id: ID!
     name: String
@@ -18,28 +35,32 @@ const typeDefs = gql`
     image: String
   }
 
+  type Token{
+    token: String
+  }
+
   type Person{
     name: String
     email: String
     phoneNum: String
   }
 
-  type Query{
-    prisoners: [Prisoner]
-    prisoner (id: ID): Prisoner
-  }
 
-  type Mutation{
-    addPrisoner(data: prisonerInput): String
-    deletePrisonerRecord(id: ID): String
-    addStaff(data: staffInput): String
-    addPrison(data: prisonInput): String
+  type LoginResponse{
+    email: String
+    id: String
   }
+ 
 
 #   enum Gender {
 #     MALE
 #     FEMALE
 # }
+
+  input UserLoginInput{
+    email: String!
+    password: String!
+  }
 
   input prisonerInput {
     name: String
@@ -61,7 +82,7 @@ const typeDefs = gql`
     name: String
     email: String
     gender: String
-    dateOfBirth: String
+    date: String
     nationality: String
     lga: String
     position: String
@@ -77,6 +98,14 @@ const typeDefs = gql`
   prisonLGA: String
   prisonDetail: String
   prisonImage: String
+ }
+
+
+ input adminInput {
+   name: String
+   email: String
+   phone: String
+   password: String
  }
 `;
 
