@@ -6,17 +6,27 @@ import { Flex } from '../styles/LandingStyles';
 
 export default class Prisons extends Component {
 
+  state = {
+    token: ''
+  }
 
+    async componentDidMount(){
+      const getToken = await localStorage.getItem('token')
+      this.setState({
+        token: getToken
+      })
+    }
 
   render() {
+    const {token} = this.state;
     let menus = [
       {
         name: 'PRISONERS',
         to: '/allprisoners'
       },
       {
-        name: 'PROFILE',
-        to: '/profile'
+        name: token != null ? 'PROFILE' : 'HOME',
+        to: token != null ? '/profile' : '/',
       },
     ]
     let prisons = JSON.parse(localStorage.getItem('prisons'))

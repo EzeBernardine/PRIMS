@@ -91,3 +91,30 @@ export const ADD_PRISON = gql`
     addPrison(data: $data)
   }
 `
+
+export const ADD_ADMIN = gql`
+  mutation($data: adminInput){
+    signAdmin(data: $data){
+      email
+      id
+    }
+  }
+`
+
+// export const LOGIN = gql`
+//   mutation(email: String!, password: String!){
+//     login(email: $email, password: $password){
+//       token
+//     }
+//   }
+// `
+
+
+
+export const LOGIN = gql`
+	mutation($email: String!, $password: String!) {
+		login(data: { email: $email, password: $password }) {
+			token
+		}
+	}
+`;

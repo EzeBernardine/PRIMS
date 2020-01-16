@@ -10,6 +10,11 @@ import {NavLink} from 'react-router-dom'
 
 export default class AddPrisoner extends Component {
 
+  handleLogout = async () => {
+    await localStorage.removeItem('token')
+    this.props.history.push('/')
+  }
+
   render() {
     let menus = [
       {
@@ -45,7 +50,7 @@ export default class AddPrisoner extends Component {
                 <li><NavLink to='/addStaff'> <FaUserPlus /> <span>ADD STAFF</span></NavLink></li>
                 <li><NavLink to='/allStaff'> <IoIosPeople /> <span>ALL STAFFS</span></NavLink></li>
                 <li><NavLink to='/rehabcenters'><IoIosHome /> <span>REHAB CENTERS</span></NavLink></li>
-                <li><NavLink to='/'><IoMdLogOut /> <span>LOGOUT</span></NavLink></li>
+                <li onClick= {() => this.handleLogout()}><IoMdLogOut /> <span>LOGOUT</span></li>
               </ul>
             </div>
           </aside>
@@ -101,10 +106,10 @@ export default class AddPrisoner extends Component {
                 </p>
               </div>
             </div>
-
+{/* 
             <div className='btn'>
             <Button red>Delete Account</Button>
-            </div>
+            </div> */}
           </section>
 
         </div>
