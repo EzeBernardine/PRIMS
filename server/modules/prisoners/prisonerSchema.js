@@ -13,6 +13,8 @@ type Query{
     deletePrisonerRecord(id: ID): String
     addStaff(data: staffInput): String
     addPrison(data: prisonInput): String
+    signAdmin(data: adminInput): LoginResponse
+    login(data: UserLoginInput!): Token
   }
 
 
@@ -33,18 +35,32 @@ type Query{
     image: String
   }
 
+  type Token{
+    token: String
+  }
+
   type Person{
     name: String
     email: String
     phoneNum: String
   }
 
+
+  type LoginResponse{
+    email: String
+    id: String
+  }
  
 
 #   enum Gender {
 #     MALE
 #     FEMALE
 # }
+
+  input UserLoginInput{
+    email: String!
+    password: String!
+  }
 
   input prisonerInput {
     name: String
@@ -82,6 +98,14 @@ type Query{
   prisonLGA: String
   prisonDetail: String
   prisonImage: String
+ }
+
+
+ input adminInput {
+   name: String
+   email: String
+   phone: String
+   password: String
  }
 `;
 
