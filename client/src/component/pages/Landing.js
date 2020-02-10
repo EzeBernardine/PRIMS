@@ -21,10 +21,6 @@ export default class Landing extends Component {
         to: '/prisons'
       },
       {
-        name: 'CATEGORIES',
-        to: '/#'
-      },
-      {
         name: 'LOG IN',
         to: '/login'
       },
@@ -102,7 +98,7 @@ export default class Landing extends Component {
 
 
         <History />
-        <Footer />
+        <Footer thipassedHistory={this.props.history}/>
       </StyledCounter>
     );
   }

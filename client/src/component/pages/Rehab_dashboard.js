@@ -1,58 +1,69 @@
-import React, { Component } from 'react';
-import { Rehab_dashboardContainer } from '../styles/Rehab_dashboardStyles';
-import Menu from '../features/Menu';
+import React, { Component } from "react";
+import { Rehab_dashboardContainer } from "../styles/Rehab_dashboardStyles";
+import Menu from "../features/Menu";
 import { FaSearchengin } from "react-icons/fa";
 // import { FaSearchengin } from "react-icons/io";
-import { Button } from '../styles/ButtonStyles';
-import { Flex } from '../styles/LandingStyles'
-import { NavLink } from 'react-router-dom';
-
+import { Button } from "../styles/ButtonStyles";
+import { Flex } from "../styles/LandingStyles";
+import { NavLink } from "react-router-dom";
 
 export default class Rehab_dashboard extends Component {
+  render() {
+    const {
+      mdImage,
+      rehabCenter,
+      rehabDetail,
+      rehabImage,
+      rehabLGA,
+      rehabManager,
+      rehabManagerPhone,
+      rehabState
+    } = this.props.location.state.response;
 
-	render() {
-		let menus = [
-			{
-				name: 'PRISONERS',
-				to: '/allprisoners'
-			},
-			{
-				name: 'PRISONS',
-				to: '/prisons'
-			},
-		]
+    let menus = [
+      {
+        name: "PRISONERS",
+        to: "/allprisoners"
+      },
+      {
+        name: "PRISONS",
+        to: "/prisons"
+      }
+    ];
 
+    // let prisoners = JSON.parse(localStorage.getItem('prisoners'))
 
+    return (
+      <Rehab_dashboardContainer>
+        <Menu menus={menus} />
 
-		let prisoners = JSON.parse(localStorage.getItem('prisoners'))
+        <div className="rehabMain">
+          <div className="profileImg">
+            <img src={require("../image/rehab.jpg")} />
+          </div>
 
+          <div className="profileContent">
+            <h1 className="name">{rehabCenter}</h1>
+            <h2 className="manager">{rehabManager} </h2>
+            <ul>
+              <li>{rehabManagerPhone}</li>
+              <li>{rehabState}</li>
+              <li>{rehabLGA}</li>
+            </ul>
+            <Button red SM>
+              Delete Account
+            </Button>
+          </div>
+        </div>
 
-		return (
-			<Rehab_dashboardContainer>
-				<Menu menus={menus} />
+        <Flex className="search" justifyCenter>
+          <input />
+          <Button>
+            <FaSearchengin />
+          </Button>
+        </Flex>
 
-				<div className='rehabMain'>
-					<div className='profileImg'><img src={require('../image/rehab.jpg')} /></div>
-
-					<div className='profileContent'>
-						<h1 className='name'> Best Drug Rehabilitation</h1>
-						<h2 className='manager'>Mrs Okoroafor Onukwuba	</h2>
-						<ul>
-							<li>08015474589</li>
-							<li>Enugu State</li>
-							<li>Okplomo Ihu</li>
-						</ul>
-						<Button red SM>Delete Account</Button>
-					</div>
-				</div>
-
-
-				<Flex className='search' justifyCenter>
-					<input />
-					<Button ><FaSearchengin /></Button>
-				</Flex>
-
-				<section>
+        {/* <section>
 					{
 						prisoners.map((prisoner, index) => (
 							<div className='eachPrisoner'  key={index}>
@@ -79,42 +90,8 @@ export default class Rehab_dashboard extends Component {
 							</div>
 						))
 					}
-				</section>
-			</Rehab_dashboardContainer>
-		);
-	}
+				</section> */}
+      </Rehab_dashboardContainer>
+    );
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -2,6 +2,7 @@ const Prisoner = require('./models/prisoner');
 const Staff = require('./models/staff');
 const AdminLogin = require('./models/adminLogin')
 const Prison = require('./models/prison')
+const Rehab = require('./models/rehab')
 const {UserInputError, AuthenticationError} = require('apollo-server-express');
 const bcrypt = require('bcrypt');
 
@@ -15,6 +16,19 @@ const resolvers = {
    prisoner: async (_, {id}) => {
      return await Prisoner.findOne({_id: id})
    },
+   getRehabCenters: async() => {
+     return await Rehab.find({isAccepted: false})
+   },
+   getPrisons: async() => {
+     return await Prison.find({})
+   },
+   getAllStaff: async() => {
+     return await Staff.find({})
+   },
+   acceptedRehab: async() => {
+     return await Rehab.find({isAccepted: true});
+     
+   }
   },
   Mutation: {
     addPrisoner: async(_, {data}) => {
@@ -66,21 +80,19 @@ const resolvers = {
       const admin = await AdminLogin.create({...data});
       return admin;
     },
-    // editPrisoner: async(_ ,args) => {
-    //   const person = await Prisoner.findOne({_id: args.id})
-    //   person.name = args.name
-    //   person.nationality = args.nationality
-    //   await person.save()
-    //   return 'User edited successfully'
-    // }
+    createRehab: async(parent, {data}) => {
+      await Rehab.create({...data})
+      return 'Rehab centre created sucessfully'
+    },
+    acceptRehab: async(_, {id}) => {
+      const foundRehab = await Rehab.findOne({_id: id});
+      if(foundRehab){
+        foundRehab.isAccepted = true
+        foundRehab.save()
+        return 'Accepted Rehab Accepted....'
+      }
+    },
   }
 }
 
 module.exports = resolvers;
-
-
-//Logout algorithm
-//1.Write a logout function.
-//2. Get the token from local storage
-//3. Use localStorage.removeItem() to remove the token
-//4.Re-direct back to login.

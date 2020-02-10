@@ -1,22 +1,25 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-
-
-type Query{
+  type Query {
     prisoners: [Prisoner]
-    prisoner (id: ID): Prisoner
+    prisoner(id: ID): Prisoner
+    getRehabCenters: [Rehab]
+    getPrisons: [Prison]
+    getAllStaff: [Staff]
+    acceptedRehab: [Rehab]
   }
 
-  type Mutation{
+  type Mutation {
     addPrisoner(data: prisonerInput): String
     deletePrisonerRecord(id: ID): String
     addStaff(data: staffInput): String
     addPrison(data: prisonInput): String
     signAdmin(data: adminInput): LoginResponse
     login(data: UserLoginInput!): Token
+    createRehab(data: rehabInput): String
+    acceptRehab(id: ID!): String
   }
-
 
   type Prisoner {
     id: ID!
@@ -35,29 +38,63 @@ type Query{
     image: String
   }
 
-  type Token{
+  type Rehab {
+    _id: String
+    rehabCenter: String
+    rehabManager: String
+    rehabManagerPhone: String
+    mdImage: String
+    rehabState: String
+    rehabLGA: String
+    tag: String
+    rehabDetail: String
+    rehabImage: String
+    isAccepted: Boolean
+  }
+
+  type Token {
     token: String
   }
 
-  type Person{
+  type Person {
     name: String
     email: String
     phoneNum: String
   }
 
+  type Prison {
+    prisonName: String
+    prisonManager: String
+    prisonManagerPhone: String
+    mdImage: String
+    prisonState: String
+    prisonLGA: String
+    prisonDetail: String
+    prisonImage: String
+  }
 
-  type LoginResponse{
+  type LoginResponse {
     email: String
     id: String
   }
- 
 
-#   enum Gender {
-#     MALE
-#     FEMALE
-# }
+  type Staff{
+    name: String
+    email: String
+    gender: String
+    date: String
+    nationality: String
+    lga: String
+    position: String
+    image: String
+  }
 
-  input UserLoginInput{
+  #   enum Gender {
+  #     MALE
+  #     FEMALE
+  # }
+
+  input UserLoginInput {
     email: String!
     password: String!
   }
@@ -89,28 +126,47 @@ type Query{
     image: String
   }
 
- input prisonInput {
-  prisonName: String
-  prisonManager: String
-  prisonManagerPhone: String
-  mdImage: String
-  prisonState: String
-  prisonLGA: String
-  prisonDetail: String
-  prisonImage: String
- }
+  input prisonInput {
+    prisonName: String
+    prisonManager: String
+    prisonManagerPhone: String
+    mdImage: String
+    prisonState: String
+    prisonLGA: String
+    prisonDetail: String
+    prisonImage: String
+  }
 
+  # enum accountType {
+  #   administrator
+  #   staff
+  # }
 
- input adminInput {
-   name: String
-   email: String
-   phone: String
-   password: String
- }
+  input adminInput {
+    name: String
+    email: String
+    phone: String
+    password: String
+    # accountType: accountType
+  }
+
+  input rehabInput {
+    rehabCenter: String
+    rehabManager: String
+    rehabManagerPhone: String
+    mdImage: String
+    rehabState: String
+    rehabLGA: String
+    tag: String
+    rehabDetail: String
+    rehabImage: String
+    isAccepted: Boolean
+  }
+
+ 
 `;
 
 module.exports = typeDefs;
-
 
 //Scalar Types -String, Number, Float
 //Object types
@@ -118,9 +174,6 @@ module.exports = typeDefs;
 //Root Query
 //Query per field
 
-
 //type Query{
 
 //}
-
-
