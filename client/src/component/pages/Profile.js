@@ -90,19 +90,19 @@ export default class AddPrisoner extends Component {
               <div>
                 <p>
                   <span>No of Staffs: </span>
-                  <span>6545</span>
+                  <span>3</span>
                 </p>
                 <p>
                   <span>No of Prisons: </span>
-                  <span>45</span>
+                  <span>7</span>
                 </p>
                 <p>
                   <span>No of Prisoners: </span>
-                  <span>45</span>
+                  <span>5</span>
                 </p>
                 <p>
                   <span>No of Rehab Centers: </span>
-                  <span>45</span>
+                  <span>4</span>
                 </p>
               </div>
             </div>

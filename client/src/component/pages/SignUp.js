@@ -7,6 +7,12 @@ import { ADD_ADMIN } from "./queries";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 let yup = require("yup");
 
+
+// const accountType = [
+//   "administrator",
+//     "staff"
+// ]
+
 export default class SignUp extends Component {
   chechLoginDetails = (values, resetForm) => {
     // new prisoner's record  to be saved in database
@@ -21,7 +27,8 @@ export default class SignUp extends Component {
         .required(),
       password: yup.string().required(),
       name: yup.string().required(),
-      phone: yup.string().required()
+      phone: yup.string().required(),
+      // accountType: yup.string().required('Account type is required')
     });
     return (
       <SignUpContainer style={{ margin: "0 auto" }}>
@@ -41,7 +48,8 @@ export default class SignUp extends Component {
                     email: "",
                     password: "",
                     phone: "",
-                    name: ""
+                    name: "",
+                    // accountType: ""
                   }}
                   onSubmit={async (
                     { email, password, phone, name },
@@ -51,7 +59,7 @@ export default class SignUp extends Component {
                       email,
                       password,
                       phone,
-                      name
+                      name,
                     };
                     console.log(data);
                     await signAdmin({
@@ -72,6 +80,18 @@ export default class SignUp extends Component {
                   {({ isSubmitting, handleSubmit }) => (
                     <Form onSubmit={handleSubmit}>
                       <Flex>
+                        {/* <Flex>
+                          <Field component="select" name="gender">
+                            <option value="Account_type"> Select Account type </option>
+                            {
+                              accountType.map(type => {
+
+                                return <option value={type}> {type} </option> 
+                              })
+                            }
+                          </Field>
+                          <ErrorMessage name="gender" component="small" />
+                        </Flex> */}
                         <Field type="text" name="name" placeholder="Name" />
                         <ErrorMessage name="name" component="small" />
 
@@ -100,8 +120,8 @@ export default class SignUp extends Component {
                       <Flex
                         justifyCenter
                         className="btn"
-                        type="submit"
                         row
+                        type="submit"
                         disabled={isSubmitting}
                       >
                         <Button>SIGN UP</Button>
